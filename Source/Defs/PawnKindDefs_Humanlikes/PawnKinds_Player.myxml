@@ -1,0 +1,33 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs:
+
+   PawnKindDef [Abstract="True" Name="RimVilos_BasePlayerPawnKind"] {
+      race: VilosRace
+      combatPower: 30
+      -isFighter
+      +apparelIgnoreSeasons
+      apparelIgnorePollution: true [MayRequire="Ludeon.RimWorld.Biotech"]
+      +forceNormalGearQuality
+      initialWillRange: 0~0
+   }
+
+   PawnKindDef [ParentName="RimVilos_BasePlayerPawnKind"] {
+      defName: RimVilos_Colonist
+      label:   Colonist
+      defaultFactionType: PlayerColony
+      chemicalAddictionChance: 0.01
+      apparelTags:
+         li: IndustrialBasic
+      apparelAllowHeadgearChance: 0
+      apparelMoney: 350~600
+      backstoryCryptosleepCommonality: 1
+      techHediffsChance: 0.03
+      techHediffsMoney: 50~800
+      techHediffsTags:
+         li: Poor
+         li: Simple
+         li: ImplantEmpireCommon
+      techHediffsDisallowTags:
+         li: PainCauser
+      initialResistanceRange: 13~21
+   }

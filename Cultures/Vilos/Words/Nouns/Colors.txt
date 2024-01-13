@@ -1,0 +1,9 @@
+white
+grey
+black
+infrared
+red
+blue
+green
+violet
+ultraviolet

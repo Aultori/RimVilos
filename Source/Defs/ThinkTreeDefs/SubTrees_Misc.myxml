@@ -1,0 +1,46 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs:
+
+
+// ======== Main vilos colonist behavior core ========
+
+   ThinkTreeDef {
+      defName: Viloslike_MainColonistBehaviorCore
+      thinkRoot<ThinkNode_Tagger> {
+         //RW: note that JobGiver_Work will assign its own tag
+         tagToGive: SatisfyingNeeds
+         subNodes {
+            li<ThinkNode_PrioritySorter>/subNodes {
+               // Some stuff for the vilos energy system might go here somewhere
+               <li JobGiver_GetRest>
+               <li JobGiver_MeditateInBed>
+               li[Class="ThinkNode_Priority_Learn" MayRequire="Ludeon.RimWorld.Biotech"]:
+                  subNodes:
+                     <li JobGiver_Learn>
+               li<ThinkNode_Priority_GetJoy>/subNodes:
+                  // Needs vilos versions:
+                  <li JobGiver_GetJoy>
+                  <li JobGiver_GetJoyInBed>
+               <li JobGiver_Meditate>
+               <li JobGiver_Reload>
+               <li JobGiver_Work>
+            }
+         }
+      }
+   }
+
+
+   // ======== Downed ========
+   // idk what should hapen here
+
+
+   // ======== Burning ========
+   // Vilos are not flamable. they can overheat, but that's different
+   // However, on the chance that they are carying something flamable, they'd try to extinguish it.
+   // I'll have to figure out if vilos wearing flamable clothes can cause things to catch fire.
+
+
+
+
+
+

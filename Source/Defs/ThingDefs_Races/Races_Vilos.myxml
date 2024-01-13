@@ -1,0 +1,188 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs:
+
+   ThingDef[ParentName="BasePawn" Name="BaseVilos" Abstract="True"] {
+      soundImpactDefault: BulletImpact_Metal
+      statBases {
+         MarketValue: 5000
+         MoveSpeed: 4.6
+         ToxicResistance: 1
+         Flammability: 0
+         ComfyTemperatureMin: -100
+         ComfyTemperatureMax: 400
+         MeatAmount: 0
+         RoyalFavorValue: 3
+      }
+
+      race {
+         thinkTreeMain:     Viloslike
+         thinkTreeConstant: ViloslikeConstant
+         intelligence:      Humanlike
+         makesFootprints: true
+         lifeExpectancy: 65535
+         nameCategory: HumanStandard
+         foodType: OmnivoreHuman 
+         manhunterOnDamageChance: 0.50
+         manhunterOnTameFailChance: 0.10 
+         soundCallIntervalRange: 2000~5000 
+         
+         lifeStageAges:
+            li { def:HumanlikeBaby        minAge:0 }
+            li { def:HumanlikeChild       minAge:3 }
+            li { def:HumanlikePreTeenager minAge:9 } [MayRequire="Ludeon.RimWorld.Biotech"]
+            li { def:HumanlikeTeenager    minAge:13 }
+            li { def:HumanlikeAdult       minAge:18 }
+
+         lifeStageWorkSettings[MayRequire="Ludeon.RimWorld.Biotech"]:
+            Firefighter: 7
+            Patient: 0
+            Doctor: 10
+            PatientBedRest: 0
+            Childcare: 0      [MayRequire="Ludeon.RimWorld.Biotech"]
+            BasicWorker: 3
+            Warden: 10
+            Handling: 7
+            Cooking: 7
+            Hunting: 7
+            Construction: 10
+            Growing: 7
+            Mining: 7
+            PlantCutting: 7
+            Smithing: 13
+            Tailoring: 7
+            Art: 10
+            Crafting: 7
+            Hauling: 3
+            Cleaning: 3
+            Research: 13
+
+         soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
+         soundMeleeMiss: Pawn_Melee_Punch_Miss
+         soundMeleeDodge: Pawn_MeleeDodge 
+
+         specialShadowData:
+            volume: (0.3, 0.8, 0.4)
+            offset: (0,0,-0.3)
+
+         // something simple. I'll need to develop the lore further then correct this
+         ageGenerationCurve {
+            points:
+               li: (21,0)
+               li: (32,100)
+               li: (64,100)
+               li: (128,0)
+         }
+
+         // DO SOMETHING ABOUT THESE!!!?
+         hediffGiverSets:
+            li: OrganicStandard
+            li: Human 
+      }
+
+      // CHANGE THESE THINGS
+      recipes {
+         li: ExciseCarcinoma
+         li: AdministerMechSerumHealer
+         li: RemoveBodyPart
+         li: Euthanize
+         li: Anesthetize
+         li: CureScaria
+      }
+
+      // ALSO THIS, could just remove it, but idk if it'd work without it yet.
+      ingredient {
+         mergeCompatibilityTags:
+            li: HumanMeat 
+      }
+   }
+
+   ThingDef[ParentName="BaseVilos"] {
+      defName: VilosRace
+      label: Vilos
+      description: Vilos are a race of synthetic creatures that often resemble dragons. They are very technologically advanced, their society existing for thousands, possibly millions of years after entering the space age.
+
+      race {
+         fleshType: VilosNormal
+         body: RimVilos_HumanoidFourArms
+      }
+      tools {
+         li {
+            label: superior left fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: SuperiorLeftHand 
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+         li {
+            label: superior right fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: SuperiorRightHand 
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+         li {
+            label: inferior left fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: InferiorLeftHand 
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+         li {
+            label: inferior right fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: InferiorRightHand 
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+         li {
+            label: teeth
+            capacities:
+               li: Bite
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: Teeth
+            chanceFactor: 0.07
+            soundMeleeHit: Pawn_Melee_HumanBite_Hit
+            soundMeleeMiss: Pawn_Melee_HumanBite_Miss
+         }
+         li {
+            label: head
+            capacities:
+               li: Blunt
+            power: 5
+            cooldownTime: 2
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+            chanceFactor: 0.2
+         } 
+         li {
+            label: tail
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: TailAttackTool
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+      }
+   }
+

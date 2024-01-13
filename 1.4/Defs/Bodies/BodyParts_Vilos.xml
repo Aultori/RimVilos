@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <!--======== Groups ========-->
+  
+  <BodyPartGroupDef>
+    <defName>ScannerArray</defName>
+    <label>scanner array</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>AntennaArray</defName>
+    <label>antenna array</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>DorsalAntenna</defName>
+    <label>dorsal antenna</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>TailAttackTool</defName>
+    <label>tail</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>SuperiorHands</defName>
+    <label>superior hands</label>
+  </BodyPartGroupDef>
+  <BodyPartGroupDef>
+    <defName>InferiorHands</defName>
+    <label>inferior hands</label>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>SuperiorLeftHand</defName>
+    <label>superior left fist</label>
+    <labelShort>superior left fist</labelShort>
+  </BodyPartGroupDef>
+  <BodyPartGroupDef>
+    <defName>SuperiorRightHand</defName>
+    <label>superior right fist</label>
+    <labelShort>superior right fist</labelShort>
+  </BodyPartGroupDef>
+  
+  <BodyPartGroupDef>
+    <defName>InferiorLeftHand</defName>
+    <label>inferior left fist</label>
+    <labelShort>inferior left fist</labelShort>
+  </BodyPartGroupDef>
+  <BodyPartGroupDef>
+    <defName>InferiorRightHand</defName>
+    <label>inferior right fist</label>
+    <labelShort>inferior right fist</labelShort>
+  </BodyPartGroupDef>
+  
+  <!--======== Body Parts ========-->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Torso</defName>
+    <label>torso</label>
+    <hitPoints>40</hitPoints>
+    <skinCovered>true</skinCovered>
+    <canScarify>false</canScarify>
+    <canSuggestAmputation>false</canSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Shoulder</defName>
+    <label>shoulder</label>
+    <hitPoints>30</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Arm</defName>
+    <label>arm</label>
+    <hitPoints>30</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Hand</defName>
+    <label>hand</label>
+    <hitPoints>20</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Finger</defName>
+    <label>finger</label>
+    <hitPoints>8</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbDigit</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Waist</defName>
+    <label>utility slot</label>
+    <conceptual>true</conceptual>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Tail</defName>
+    <label>tail</label>
+    <hitPoints>32</hitPoints>
+    <skinCovered>true</skinCovered>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Toe</defName>
+    <label>toe</label>
+    <hitPoints>8</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbDigit</li>
+    </tags>
+  </BodyPartDef>
+  
+  <!--======== Bones ========-->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Clavicle</defName>
+    <label>clavicle</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+    <destroyableByDamage>false</destroyableByDamage>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Sternum</defName>
+    <label>sternum</label>
+    <hitPoints>20</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <destroyableByDamage>false</destroyableByDamage>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Humerus</defName>
+    <label>humerus</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Radius</defName>
+    <label>radius</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>ManipulationLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Pelvis</defName>
+    <label>pelvis</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>Pelvis</li>
+    </tags>
+    <destroyableByDamage>false</destroyableByDamage>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Femur</defName>
+    <label>femur</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Tibia</defName>
+    <label>tibia</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>MovingLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  
+  <!--======== Organs ========-->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Heart</defName>
+    <label>heart</label>
+    <hitPoints>15</hitPoints>
+    <bleedRate>5</bleedRate>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>BloodPumpingSource</li>
+    </tags>
+    <spawnThingOnRemoved>Heart</spawnThingOnRemoved>
+  </BodyPartDef>
+  <!-- -canSuggestAmputation -->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Reactor</defName>
+    <label>reactor</label>
+    <hitPoints>32</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <alive>false</alive>
+    <tags>
+      <li>BloodPumpingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_BloodFilter</defName>
+    <label>blood filter</label>
+    <hitPoints>15</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <tags>
+      <li>BloodFiltrationSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  
+  <!--======== General ========-->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Head</defName>
+    <label>head</label>
+    <hitPoints>25</hitPoints>
+    <bleedRate>2</bleedRate>
+    <skinCovered>true</skinCovered>
+    <canSuggestAmputation>false</canSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Skull</defName>
+    <label>skull</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <skinCovered>false</skinCovered>
+    <canSuggestAmputation>false</canSuggestAmputation>
+    <destroyableByDamage>false</destroyableByDamage>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_BrainShell</defName>
+    <label>brain shell</label>
+    <hitPoints>32</hitPoints>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>false</delicate>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef>
+  <!-- -canSuggestAmputaton -->
+  
+  <BodyPartDef>
+    <defName>RimVilos_BrainCore</defName>
+    <label>brain core</label>
+    <hitPoints>8</hitPoints>
+    <permanentInjuryChanceFactor>99999999</permanentInjuryChanceFactor>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>true</delicate>
+    <skinCovered>false</skinCovered>
+    <alive>false</alive>
+    <tags>
+      <li>ConsciousnessSource</li>
+    </tags>
+  </BodyPartDef>
+  <!-- -canSuggestAmputaton -->
+  
+  <BodyPartDef>
+    <defName>RimVilos_Eye</defName>
+    <label>eye</label>
+    <hitPoints>10</hitPoints>
+    <frostbiteVulnerability>2</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>15</permanentInjuryChanceFactor>
+    <delicate>true</delicate>
+    <skinCovered>false</skinCovered>
+    <canScarify>true</canScarify>
+    <socketed>true</socketed>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+    <hitChanceFactors>
+      <li>
+        <key>Blunt</key>
+        <value>0</value>
+      </li>
+    </hitChanceFactors>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Scanner</defName>
+    <label>scanner</label>
+    <hitPoints>20</hitPoints>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>false</delicate>
+    <alive>false</alive>
+    <skinCovered>false</skinCovered>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>HearingSource</li>
+      <li>TalkingSource</li>
+      <li>SightSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Antenna</defName>
+    <label>antenna</label>
+    <hitPoints>10</hitPoints>
+    <solid>false</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>false</delicate>
+    <alive>false</alive>
+    <skinCovered>false</skinCovered>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>HearingSource</li>
+      <li>TalkingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_DorsalAntenna</defName>
+    <label>dorsal antenna</label>
+    <hitPoints>10</hitPoints>
+    <solid>false</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>false</delicate>
+    <alive>false</alive>
+    <skinCovered>false</skinCovered>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>HearingSource</li>
+      <li>TalkingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_DorsalAntennaArray</defName>
+    <label>dorsal antenna array</label>
+    <hitPoints>20</hitPoints>
+    <solid>false</solid>
+    <bleedRate>0</bleedRate>
+    <delicate>false</delicate>
+    <alive>false</alive>
+    <skinCovered>false</skinCovered>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Jaw</defName>
+    <label>jaw</label>
+    <hitPoints>20</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>EatingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Neck</defName>
+    <label>neck</label>
+    <hitPoints>25</hitPoints>
+    <bleedRate>4</bleedRate>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>EatingPathway</li>
+    </tags>
+    <canSuggestAmputation>false</canSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_AbdominalShell</defName>
+    <label>abdominal shell</label>
+    <hitPoints>64</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <destroyableByDamage>false</destroyableByDamage>
+    <canSuggestAmputation>false</canSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Spine</defName>
+    <label>spine</label>
+    <hitPoints>25</hitPoints>
+    <permanentInjuryChanceFactor>6</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <bleedRate>0</bleedRate>
+    <canSuggestAmputation>false</canSuggestAmputation>
+    <tags>
+      <li>Spine</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Leg</defName>
+    <label>leg</label>
+    <hitPoints>32</hitPoints>
+    <skinCovered>true</skinCovered>
+    <canScarify>true</canScarify>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Foot</defName>
+    <label>foot</label>
+    <hitPoints>25</hitPoints>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbSegment</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>RimVilos_Tongue</defName>
+    <label>tongue</label>
+    <skinCovered>false</skinCovered>
+    <bleedRate>0</bleedRate>
+    <beautyRelated>true</beautyRelated>
+  </BodyPartDef>
+</Defs>

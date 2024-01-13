@@ -1,0 +1,126 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs:
+
+#  <BodyPartDef>
+#    <defName>Torso</defName>
+#    <label>torso</label>
+#    <hitPoints>40</hitPoints>
+#    <skinCovered>true</skinCovered>
+#    <canScarify>true</canScarify>
+#    <canSuggestAmputation>false</canSuggestAmputation>
+#  </BodyPartDef> 
+
+  BodyPartDef:
+    [Torso] "torso" (40)
+    +skinCovered
+    +canScarify
+    -canSuggestAmputation 
+
+  BodyPartDef:
+    [Shoulder] "shoulder" (30)
+    +skinCovered
+    tags:
+      li: ManipulationLimbSegment
+
+  BodyPartDef:
+    [Arm] "arm" (30)
+    +skinCovered
+    +canScarify
+    tags:
+      li: ManipulationLimbCore
+
+  BodyPartDef:
+    [Hand] "hand" (20)
+    frostbiteVulnerability: 0.5
+    +skinCovered
+    tags:
+      li: ManipulationLimbSegment
+
+  BodyPartDef:
+    [Finger] "finger" (8)
+    frostbiteVulnerability: 8
+    +pawnGeneratorCanAmputate
+    +skinCovered
+    tags:
+      li: ManipulationLimbDigit
+
+  BodyPartDef:
+    [Waist] "utility slot"
+    +conceptual
+
+  BodyPartDef:
+    [Toe] "toe" (8)
+    frostbiteVulnerability: 10
+    +pawnGeneratorCanAmputate
+    +skinCovered
+    tags:
+      li: MovingLimbDigit
+  
+  <!-- Bones -->
+
+  BodyPartDef:
+    [Clavicle] "clavicle" (25)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: ManipulationLimbSegment
+    -destroyableByDamage
+
+  BodyPartDef:
+    [Sternum] "sternum" (20)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: BreathingSourceCage
+    -destroyableByDamage
+
+  BodyPartDef:
+    [Humerus] "humerus" (25)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: ManipulationLimbSegment
+
+  BodyPartDef:
+    [Radius] "radius" (20)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: ManipulationLimbSegment
+
+  BodyPartDef:
+    [Pelvis] "pelvis" (25)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: Pelvis
+    -destroyableByDamage
+
+  BodyPartDef:
+    [Femur] "femur" (25)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: MovingLimbSegment
+
+  BodyPartDef:
+    [Tibia] "tibia" (25)
+    permanentInjuryChanceFactor: 0
+    -skinCovered
+    +solid
+    bleedRate: 0
+    tags:
+      li: MovingLimbSegment
+

@@ -1,0 +1,108 @@
+
+<part name> "label" <coverage weight> -C <coverage> -groups {groups} {<parts>}
+(<part name> "label" <coverage weight>)
+put () where <li> is
+put [] where <def> is
+customLabel becomes ""
+
+
+<BodyDef>
+   <defName>Lancer</defName>
+   <label>lancer</label>
+   <corePart>
+   [MechanicalThorax]
+   -height Middle
+   -depth Outside
+   <parts>
+
+      ,
+      [MechanicalNeck] -C 0.10
+      -height Top
+      -parts {
+         ,
+         [MechanicalHead] -C 0.80
+         -groups { ,HeadAttackTool }
+         -parts {
+            , [ArtificialBrain] -C 0.10 -depth Inside 
+            , [SightSensor] "left sight sensor" -C 0.13 
+            , [SightSensor] "right sight sensor" -C 0.13 
+            , [HearingSensor] "left hearing sensor" -C 0.10 
+            , [HearingSensor] "right hearing sensor" -C 0.10 
+            , [SmellSensor] -C 0.10 
+         }
+      } 
+
+      ,
+      [MechanicalShoulder] "left mechanical shoulder" -C 0.17
+      -parts {
+         ,
+         [MechanicalArm] "left arm" -C 0.85
+         -parts {
+            ,
+            [MechanicalHand] "left hand" -C 0.2
+            -height Bottom
+            -parts {
+               , [MechanicalFinger] "left pinky" -C 0.15
+                  -groups { ,LeftHand } 
+               , [MechanicalFinger] "left middle finger" -C 0.15
+                  -groups { ,LeftHand ,MiddleFingers } 
+               , [MechanicalFinger] "left index finger" -C 0.15
+                  -groups { ,LeftHand } 
+               , [MechanicalFinger] "left thumb" -C 0.15
+                  -groups { ,LeftHand } 
+            }
+         }
+      } 
+
+      ,
+      [MechanicalShoulder] "right mechanical shoulder"
+      -C 0.17
+      -parts {
+         ,
+         [MechanicalArm] "right arm"
+         -C 0.85
+         -parts {
+            ,
+            [MechanicalHand]
+            "right hand"
+            -C 0.2
+            -height Bottom
+            -parts {
+               , [MechanicalFinger] "right pinky" -C 0.15 -groups { ,RightHand } 
+               , [MechanicalFinger] "right middle finger" -C 0.15 -groups { ,RightHand ,MiddleFingers } 
+               , [MechanicalFinger] "right index finger" -C 0.15 -groups { ,RightHand } 
+               , [MechanicalFinger] "right thumb" -C 0.15 -groups { ,RightHand } 
+            }
+         } 
+      }
+      
+      ,
+      [MechanicalLeg] "left leg"
+      -C 0.2
+      -height Bottom
+      -parts { , [MechanicalFoot] "left foot" -C 0.2 }
+      
+      ,
+      [MechanicalLeg] "right leg"
+      -C 0.2
+      -height Bottom
+      -parts { , [MechanicalFoot] "right foot" -C 0.2 }
+      
+      ,
+      [Reactor]
+      -C 0.06
+      -depth Inside
+      
+      ,
+      [FluidReprocessor]
+      -C 0.04
+      -depth Inside
+      
+      ,
+      [FluidReprocessor]
+      -C 0.04
+      -depth Inside
+      
+   </parts>
+   </corePart>
+</BodyDef>

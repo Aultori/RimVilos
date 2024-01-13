@@ -1,0 +1,229 @@
+<BodyDef>
+<defName>Human</defName>
+<label>human</label>
+
+<corePart>
+[Torso]
+-height Middle
+-depth Outside
+( ,Torso )
+{{
+   ,
+   [Ribcage] (0.036)
+   -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Sternum] (0.015)
+   -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Pelvis] (0.025)
+   -depth Inside
+   -height Bottom
+   ( ,Torso )
+   
+   ,
+   [Spine] (0.025)
+   -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Stomach] (0.025)
+   -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Heart] (0.020)
+   -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Lung] "left lung" (0.025) -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Lung] "right lung" (0.025) -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Kidney] "left kidney" (0.017)
+   -depth Inside ( ,Torso )
+   
+   ,
+   [Kidney] "right kidney" (0.017)
+   -depth Inside ( ,Torso )
+   
+   ,
+   [Liver] (0.025) -depth Inside
+   ( ,Torso )
+   
+   ,
+   [Neck] (0.075) -height top
+   ( ,neck )
+   {{
+      ,
+      [head] (0.80)
+      ( ,upperhead ,fullhead ,headattacktool )
+      {{
+         ,
+         [skull] (0.18)
+         -depth inside
+         ( ,upperhead ,eyes ,fullhead )
+         {{ , [brain] (0.8) ( ,upperhead ,eyes ,fullhead ) }}
+         
+         ,
+         [eye] "left eye" (0.07)
+         ( ,fullhead ,eyes )
+         -woundanchortag lefteye
+         
+         ,
+            [eye] "right eye" (0.07)
+            ( ,fullhead ,eyes )
+            -woundanchortag righteye
+         
+         ,
+            [ear] "left ear" (0.07)
+            ( ,upperhead ,fullhead )
+         
+         ,
+            [ear] "right ear" (0.07)
+            ( ,upperhead ,fullhead )
+         
+         ,
+            [nose] (0.10)
+            ( ,fullhead ) 
+         ,
+            [jaw] (0.15)
+            ( ,teeth ,fullhead ,mouth )
+            {{ , [tongue] (0) -depth inside ( ,fullhead ) }}
+         
+      }}
+      
+   }}
+   
+   ,
+      [shoulder] "left shoulder" (0.12)
+      -woundanchortag leftshoulder 
+      ( ,shoulders )
+      {{
+         ,
+            [clavicle] "left clavicle" (0.09)
+            -height top
+            -depth inside
+            ( ,torso )
+         
+         ,
+            [arm] "left arm" (0.77)
+            ( ,arms )
+            {{
+               ,
+                  [humerus] "left humerus" (0.1)
+                  -depth inside
+                  ( ,arms )
+               
+               ,
+                  [radius] "left radius" (0.1)
+                  -depth inside
+                  ( ,arms )
+               
+               ,
+                  [hand] "left hand" (0.14)
+                  -height bottom
+                  ( ,hands )
+                  {{
+                     , [finger] "left pinky" (0.06) ( ,hands ,lefthand ) 
+                     , [finger] "left ring finger" (0.07) ( ,hands ,lefthand ) 
+                     , [finger] "left middle finger" (0.08) ( ,hands ,lefthand ,middlefingers ) 
+                     , [finger] "left index finger" (0.07) ( ,hands ,lefthand ) 
+                     , [finger] "left thumb" (0.08) ( ,hands ,lefthand ) 
+                  }}
+               
+            }}
+         
+      }}
+   
+   ,
+      [shoulder]
+      "right shoulder"
+      (0.12)
+      -woundanchortag rightshoulder
+      ( ,shoulders )
+      {{
+         ,
+            [clavicle] "right clavicle" (0.09)
+            -height top
+            -depth inside
+            ( ,torso )
+         
+         ,
+            [arm] "right arm" (0.77)
+            ( ,arms )
+            {{
+               ,
+                  [humerus] "right humerus" (0.1)
+                  -depth inside
+                  ( ,arms )
+               
+               ,
+                  [radius] "right radius" (0.1)
+                  -depth inside
+                  ( ,arms )
+               
+               ,
+                  [hand] "right hand" (0.14)
+                  -height bottom
+                  ( ,hands )
+                  {{
+                     , [finger] "right pinky" (0.06) ( ,hands ,righthand ) 
+                     , [finger] "right ring finger" (0.07) ( ,hands ,righthand ) 
+                     , [finger] "right middle finger" (0.08) ( ,hands ,righthand ,middlefingers )
+                     , [finger] "right index finger" (0.07) ( ,hands ,righthand )
+                     , [finger] "right thumb" (0.08) ( ,hands ,righthand ) 
+                  }}
+               
+            }}
+         
+      }}
+   
+   ,
+      [waist] (0)
+      -height bottom
+      ( ,waist )
+   
+   ,
+      [leg] "left leg" (0.14) -height bottom ( ,legs )
+      -woundanchortag leftleg
+      {{
+         , [femur] "left femur" (0.1) -depth inside ( ,legs ) 
+         , [tibia] "left tibia" (0.1) -depth inside ( ,legs ) 
+         , [foot] "left foot" (0.1) ( ,feet )
+            {{
+               , [toe] "left little toe" (0.06) ( ,feet ) 
+               , [toe] "left fourth toe" (0.07) ( ,feet ) 
+               , [toe] "left middle toe" (0.08) ( ,feet ) 
+               , [toe] "left second toe" (0.09) ( ,feet ) 
+               , [toe] "left big toe" (0.09) ( ,feet ) 
+            }} 
+      }}
+   
+   ,
+      [leg] "right leg" (0.14) -height bottom ( ,legs )
+      -woundanchortag rightleg
+      {{
+         , [femur] "right femur" (0.1) -depth inside ( ,legs ) 
+         , [tibia] "right tibia" (0.1) -depth inside ( ,legs ) 
+         , [foot] "right foot" (0.1) ( ,feet )
+            {{
+               , [toe] "right little toe" (0.06) ( ,feet )
+               , [toe] "right fourth toe" (0.07) ( ,feet ) 
+               , [toe] "right middle toe" (0.08) ( ,feet )
+               , [toe] "right second toe" (0.09) ( ,feet ) 
+               , [toe] "right big toe" (0.09) ( ,feet ) 
+            }} 
+      }}
+   
+}}
+</corepart>
+</bodydef>

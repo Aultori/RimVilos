@@ -1,0 +1,9 @@
+#<?xml version="1.0" encoding="utf-8" ?> 
+Defs { 
+   CultureDef {
+      defName: VilosCulture
+      label: vilos
+      folder: Cultures/Vilos/
+      cultureHelper: CultureHelper_Vilos
+   }
+} 

@@ -1,0 +1,36 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs {
+   FleshTypeDef {
+      defName: VilosNormal
+      corpseCategory: CorpsesAnimal
+      damageEffecter: Damage_HitFlesh
+      genericWounds:
+         li { texture:Things/Pawn/Wounds/WoundFleshA }
+         li { texture:Things/Pawn/Wounds/WoundFleshB }
+         li { texture:Things/Pawn/Wounds/WoundFleshC }
+      // vilos bodies should automatically close off wounds after some time
+      bandagedWounds:
+         li { texture:Things/Pawn/Wounds/BandagedA }
+         li { texture:Things/Pawn/Wounds/BandagedB }
+         li { texture:Things/Pawn/Wounds/BandagedC }
+      // Vilos can get scars, but they heal over time, and usually aren't visible because of their "fur"
+      // hediffWounds {
+      //    li {
+      //       hedeff: Scarification 
+      //       hedeff: MissingBodyPart
+      //    }
+      // } 
+   }
+
+   FleshTypeDef {
+      defName: VilosMech
+      corpseCategory: CorpsesMechanoid
+      damageEffecter: Damage_HitMechanoid
+      genericWounds:
+         li { texture:Things/Pawn/Wounds/WoundMechA }
+         li { texture:Things/Pawn/Wounds/WoundMechB }
+         li { texture:Things/Pawn/Wounds/WoundMechC }
+      // Vilos mechs can get "scars": temporary repair jobs that never heal on their own.
+      // With the right technology they can be healed completely.
+   }
+} 

@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+   ThingDef[ParentName="BasePawn" Name="BaseMechanoid" Abstract="True"] {
+      soundImpactDefault: BulletImpact_Metal
+      statBases {
+         MarketValue: 1200
+         PsychicSensitivity: 0.5
+         ToxicResistance: 1
+         Flammability: 0
+         ComfyTemperatureMin: -100
+         ComfyTemperatureMax: 250
+         MeatAmount: 0
+         ArmorRating_Heat: 2.00
+         BandwidthCost MayRequire="Ludeon.Rimworld.Biotech": 1
+         ControlTakingTime MayRequire="Ludeon.Rimworld.Biotech": 12
+         ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech": 1
+         MechEnergyLossPerHP MayRequire="Ludeon.Rimworld.Biotech": 0.33
+         WastepacksPerRecharge MayRequire="Ludeon.Rimworld.Biotech": 5
+         WorkSpeedGlobal MayRequire="Ludeon.Rimworld.Biotech": 0.5
+      }
+      receivesSignals: true
+      tradeability: None
+      race {
+         fleshType: Mechanoid
+         needsRest: false
+         hasGenders: false
+         foodType: None
+         lifeExpectancy: 2500
+         bloodDef: Filth_MachineBits
+         nameGenerator MayRequire="Ludeon.RimWorld.Biotech": NamerMech
+         soundCallIntervalRange: 1000~2000
+         soundCallIntervalFriendlyFactor: 2
+         thinkTreeConstant MayRequire="Ludeon.RimWorld.Biotech": MechConstant
+      }
+      comps {
+         <li Class="CompProperties_CanBeDormant" />
+         <li Class="CompProperties_WakeUpDormant">
+            wakeUpOnDamage: true
+            wakeUpCheckRadius: 30
+            wakeUpSound: MechanoidsWakeUp
+         </li>
+         <li MayRequire="Ludeon.Rimworld.Biotech" Class="CompProperties_OverseerSubject">
+            needsOverseerEffect: MechUncontrolled
+            delayUntilFeralCheck: 60000
+            feralMtbDays: 10
+            feralCascadeRadialDistance: 25
+         </li>
+         <li MayRequire="Ludeon.Rimworld.Biotech" Class="CompProperties_MechRepairable" />
+      }
+   }
+
+   <PawnKindDef Name="BaseMechanoidKind" Abstract="True">
+      defaultFactionType: Mechanoid
+      aiAvoidCover: true
+      destroyGearOnDrop: true
+      canStrip: false
+      minGenerationAge MayRequire="Ludeon.Rimworld.Biotech": 200
+      forceNormalGearQuality: true
+   </PawnKindDef>
+
+   <!-- Centipede - abstract -->
+   <ThingDef Abstract="True" Name="MechCentipede" ParentName="BaseMechanoid">
+      description: Heavy combat mechanoids that glide on dozens of tiny legs. Their thick carapace and firepower makes them very effective against bunched-up static defenders. They are somewhat vulnerable to mobile hit-and-run tactics.
+      <statBases>
+         MoveSpeed: 1.9
+         ArmorRating_Blunt: 0.22
+         ArmorRating_Sharp: 0.72
+         PsychicSensitivity: 0.75
+         BandwidthCost MayRequire="Ludeon.Rimworld.Biotech": 4
+         MechEnergyLossPerHP  MayRequire="Ludeon.Rimworld.Biotech": 0.2
+      </statBases>
+      <tools>
+         <li>
+            label: head
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 17
+            cooldownTime: 2.6
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+         </li>
+      </tools>
+      <race>
+         intelligence: ToolUser
+         thinkTreeMain: Mechanoid
+         body: MechanicalCentipede
+         baseBodySize: 3.0
+         baseHealthScale: 4.32
+         <lifeStageAges>
+            <li>
+               def: MechanoidFullyFormed
+               minAge: 0
+               soundWounded: Pawn_Mech_Centipede_Wounded
+               soundDeath: Pawn_Mech_Centipede_Death
+               soundCall: Pawn_Mech_Centipede_Call
+            </li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">
+               def: MechanoidFullyFormed
+               minAge: 100
+               soundWounded: Pawn_Mech_Centipede_Wounded
+               soundDeath: Pawn_Mech_Centipede_Death
+               soundCall: Pawn_Mech_Centipede_Call
+            </li>
+         </lifeStageAges>
+         soundCallIntervalRange: 1000~2000
+         soundMeleeHitPawn: Pawn_Melee_MechanoidBash_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_MechanoidBash_HitBuilding
+         soundMeleeMiss: Pawn_Melee_MechanoidBash_Miss
+         mechWeightClass: Heavy
+      </race>
+      <butcherProducts>
+         Steel: 30
+         Plasteel: 10
+      </butcherProducts>
+   </ThingDef>
+
+   <PawnKindDef Abstract="True" Name="MechCentipedeBase" ParentName="BaseMechanoidKind">
+      <lifeStages>
+         <li MayRequire="Ludeon.RimWorld.Biotech">
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/CentipedeClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Centipede
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li>
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/Centipede
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Centipede
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      combatPower: 400
+      weaponMoney: 9999~9999
+      techHediffsChance MayRequire="Ludeon.RimWorld.Biotech": 1
+      techHediffsMoney: 9999~9999
+      controlGroupPortraitZoom: 0.65
+   </PawnKindDef>
+
+   <!-- Centipede - blaster -->
+   <ThingDef ParentName="MechCentipede">
+      defName: Mech_CentipedeBlaster
+      label: centipede blaster
+   </ThingDef>  
+
+   <PawnKindDef ParentName="MechCentipedeBase">
+      defName: Mech_CentipedeBlaster
+      label: centipede blaster
+      race: Mech_CentipedeBlaster
+      <weaponTags>
+         li: ChargeBlasterHeavyGun
+      </weaponTags>
+   </PawnKindDef>
+
+   <!-- Centipede - minigun -->
+   <ThingDef ParentName="MechCentipede">
+      defName: Mech_CentipedeGunner
+      label: centipede gunner
+   </ThingDef>
+
+   <PawnKindDef ParentName="MechCentipedeBase">
+      defName: Mech_CentipedeGunner
+      label: centipede gunner
+      race: Mech_CentipedeGunner
+      <lifeStages Inherit="False">
+         <li MayRequire="Ludeon.RimWorld.Biotech">
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/CentipedeGunnerClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/CentipedeGunner
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li>
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/CentipedeGunner
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/CentipedeGunner
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      <weaponTags>
+         li: Minigun
+      </weaponTags>
+   </PawnKindDef>
+
+   <!-- Centipede - burner -->
+   <ThingDef ParentName="MechCentipede">
+      defName: Mech_CentipedeBurner
+      label: centipede burner
+   </ThingDef>
+
+   <PawnKindDef ParentName="MechCentipedeBase">
+      defName: Mech_CentipedeBurner
+      label: centipede burner
+      race: Mech_CentipedeBurner
+      <lifeStages Inherit="False">
+         <li MayRequire="Ludeon.RimWorld.Biotech">
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/CentipedeBurnerClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/CentipedeBurner
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li>
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/CentipedeBurner
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/CentipedeBurner
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 3
+               <shadowData>
+                  volume: (0.6, 0.8, 0.6)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      <weaponTags>
+         li: InfernoCannonGun
+      </weaponTags>
+   </PawnKindDef>
+
+   <!-- Walker (lancer/scyther) base -->
+
+   <ThingDef ParentName="BaseMechanoid" Name="BaseMechanoidWalker" Abstract="True">
+      <statBases>
+         MoveSpeed: 4.7
+         ArmorRating_Blunt: 0.20
+         ArmorRating_Sharp: 0.40
+      </statBases>
+      <race>
+         intelligence: ToolUser
+         thinkTreeMain: Mechanoid
+         baseBodySize: 1.0
+         <lifeStageAges>
+            <li>
+               def: MechanoidFullyFormed
+               minAge: 0
+               soundWounded: Pawn_Mech_Scyther_Wounded
+               soundDeath: Pawn_Mech_Scyther_Death
+               soundCall: Pawn_Mech_Scyther_Call
+            </li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">
+               def: MechanoidFullyFormed
+               minAge: 100
+               soundWounded: Pawn_Mech_Scyther_Wounded
+               soundDeath: Pawn_Mech_Scyther_Death
+               soundCall: Pawn_Mech_Scyther_Call
+            </li>
+         </lifeStageAges>
+      </race>
+      <butcherProducts>
+         Steel: 15
+      </butcherProducts>
+   </ThingDef>
+
+   <!-- Lancer - fast mid-range shooter -->
+   
+   <ThingDef Name="LancerMechanoidWalker" ParentName="BaseMechanoidWalker">
+      defName: Mech_Lancer
+      label: lancer
+      description: Fast human-sized combat mechanoids built for medium and long-range combat. Their bodies are light, making them vulnerable targets at close range - especially in melee combat.
+      <tools>
+         <li>
+            label: left fist
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 12.0
+            cooldownTime: 2
+            linkedBodyPartsGroup: LeftHand
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: right fist
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 12.0
+            cooldownTime: 2
+            linkedBodyPartsGroup: RightHand
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: head
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 8.5
+            cooldownTime: 2
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+            chanceFactor: 0.2
+         </li>
+      </tools>
+      <race>
+         body: Lancer
+         baseHealthScale: 0.72
+         soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
+         soundMeleeMiss: Pawn_Melee_Punch_Miss
+      </race>
+      <statBases>
+         BandwidthCost MayRequire="Ludeon.Rimworld.Biotech": 3
+      </statBases>
+   </ThingDef>
+
+   <PawnKindDef ParentName="BaseMechanoidKind">
+      defName: Mech_Lancer
+      label: lancer
+      race: Mech_Lancer
+      combatPower: 180
+      <lifeStages>
+         <li MayRequire="Ludeon.Rimworld.Biotech">
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/LancerClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Lancer
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 1.5
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li>
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/Lancer
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Lancer
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 1.5
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      weaponMoney: 9999~9999
+      <weaponTags>
+         li: MechanoidGunMedium
+      </weaponTags>
+      techHediffsChance: 1
+      techHediffsMoney: 9999~9999
+   </PawnKindDef>
+
+
+   <!-- Scyther - fast melee -->
+
+   <ThingDef ParentName="BaseMechanoidWalker">
+      defName: Mech_Scyther
+      label: scyther
+      description: Fast, spindly, human-sized combat mechanoids specializing in rapid approach and close-range combat. Their bodies are covered in points and blades, but they mostly use their two arm blades to lop off limbs or gut their victims alive.
+      <tools>
+         <li>
+            label: left blade
+            <capacities>
+               li: Cut
+               li: Stab
+            </capacities>
+            power: 20
+            cooldownTime: 2
+            linkedBodyPartsGroup: LeftBlade
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: right blade
+            <capacities>
+               li: Cut
+               li: Stab
+            </capacities>
+            power: 20
+            cooldownTime: 2
+            linkedBodyPartsGroup: RightBlade
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: head
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 9
+            cooldownTime: 2
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+            chanceFactor: 0.2
+         </li>
+      </tools>
+      <race>
+         body: Scyther
+         baseHealthScale: 1.32
+         soundMeleeHitPawn: Pawn_Melee_MechanoidSlash_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_MechanoidSlash_HitBuilding
+         soundMeleeMiss: Pawn_Melee_MechanoidSlash_Miss
+      </race>
+      <statBases>
+         BandwidthCost MayRequire="Ludeon.Rimworld.Biotech": 2
+      </statBases>
+   </ThingDef>
+
+   <PawnKindDef ParentName="BaseMechanoidKind">
+      defName: Mech_Scyther
+      label: scyther
+      race: Mech_Scyther
+      combatPower: 150
+      <lifeStages>
+         <li MayRequire="Ludeon.Rimworld.Biotech">
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/ScytherClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scyther
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 1.5
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li>
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/Scyther
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scyther
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 1.5
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      weaponMoney: 0~0
+      defendPointRadius: 0
+      <weaponTags>
+      </weaponTags>
+      techHediffsChance: 1
+      techHediffsMoney: 9999~9999
+   </PawnKindDef>
+
+   <!-- Pikeman - slow sniper weak at close range -->
+   
+   <ThingDef ParentName="BaseMechanoidWalker">
+      defName: Mech_Pikeman
+      label: pikeman
+      description: A clunky multi-legged combat mechanoid specialized as a long-range weapons platform. While effective at distance, it is weak in close-range fights and in melee combat.\n\nVeterans of mechanoid wars know that often, the safest place to be around a pikeman is touching it.
+      <statBases>
+         MoveSpeed: 2.5
+         BandwidthCost MayRequire="Ludeon.Rimworld.Biotech": 2
+      </statBases>
+      <tools>
+         <li>
+            label: front left leg
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 12.0
+            cooldownTime: 2
+            linkedBodyPartsGroup: FrontLeftLeg
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: front right leg
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 12.0
+            cooldownTime: 2
+            linkedBodyPartsGroup: FrontRightLeg
+            alwaysTreatAsWeapon: true
+         </li>
+         <li>
+            label: head
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 8.5
+            cooldownTime: 2
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+            chanceFactor: 0.2
+         </li>
+      </tools>
+      <race>
+         body: Pikeman
+         baseHealthScale: 0.85
+         soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
+         soundMeleeMiss: Pawn_Melee_Punch_Miss
+         <lifeStageAges Inherit="False">
+            <li>
+               def: MechanoidFullyFormed
+               minAge: 0
+               soundWounded: Pawn_Mech_Pikeman_Wounded
+               soundDeath: Pawn_Mech_Pikeman_Death
+               soundCall: Pawn_Mech_Pikeman_Call
+            </li>
+            <li MayRequire="Ludeon.Rimworld.Biotech">
+               def: MechanoidFullyFormed
+               minAge: 100
+               soundWounded: Pawn_Mech_Pikeman_Wounded
+               soundDeath: Pawn_Mech_Pikeman_Death
+               soundCall: Pawn_Mech_Pikeman_Call
+            </li>
+         </lifeStageAges>
+      </race>
+   </ThingDef>
+
+   <PawnKindDef ParentName="BaseMechanoidKind">
+      defName: Mech_Pikeman
+      label: pikeman
+      labelPlural: pikemen
+      race: Mech_Pikeman
+      combatPower: 110
+      <lifeStages>
+         <li MayRequire="Ludeon.Rimworld.Biotech"> 
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/PikemanClean
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Pikeman
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 2.4
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+         <li> 
+            <bodyGraphicData>
+               texPath: Things/Pawn/Mechanoid/Pikeman
+               maskPath: Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Pikeman
+               shaderType: CutoutWithOverlay
+               graphicClass: Graphic_Multi
+               drawSize: 2.4
+               <shadowData>
+                  volume: (0.4, 0.8, 0.4)
+               </shadowData>
+            </bodyGraphicData>
+         </li>
+      </lifeStages>
+      weaponMoney: 9999~9999
+      <weaponTags>
+         li: MechanoidGunLongRange
+      </weaponTags>
+      techHediffsChance: 1
+      techHediffsMoney: 9999~9999
+   </PawnKindDef>
+
+   <!-- Termite -->
+
+   <ThingDef ParentName="BaseMechanoid">
+      defName: Mech_Termite
+      label: termite
+      description: A medium-sized mechanoid. Termites specialize in burrowing, digging, and breaking through defensive structures. Defenders need to decide whether to try to eliminate the termite before it can dig through their defenses, or take it where it emerges.
+      <statBases>
+         MoveSpeed: 2.1
+         ArmorRating_Blunt: 0.22
+         ArmorRating_Sharp: 0.56
+         PsychicSensitivity: 0.75
+      </statBases>
+      <tools>
+         <li>
+            label: head
+            <capacities>
+               li: Blunt
+            </capacities>
+            power: 17
+            cooldownTime: 2.6
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+         </li>
+      </tools>
+      <race>
+         intelligence: ToolUser
+         thinkTreeMain: Mechanoid
+         body: MechanicalTermite
+         baseBodySize: 1.6
+         baseHealthScale: 2.16
+         <lifeStageAges>
+            <li>
+               def: MechanoidFullyFormed
+               minAge: 0
+               soundWounded: Pawn_Mech_Termite_Wounded
+               soundDeath: Pawn_Mech_Termite_Death
+               soundCall: Pawn_Mech_Termite_Call
+            </li>
+         </lifeStageAges>
+         soundMeleeHitPawn: Pawn_Melee_MechanoidBash_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_MechanoidBash_HitBuilding
+         soundMeleeMiss: Pawn_Melee_MechanoidBash_Miss
+      </race>
+      <butcherProducts>
+         Steel: 30
+         Plasteel: 10
+      </butcherProducts>
+   </ThingDef>
+
+
+
+
+</Defs>

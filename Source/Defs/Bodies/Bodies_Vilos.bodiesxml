@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<BodyDef>
+<defName>RimVilos_HumanoidFourArms</defName>
+<label>vilos</label>
+<corePart>
+   [RimVilos_Torso]
+   height: Middle
+   depth: Outside
+   parts: {
+
+      ,
+      [RimVilos_AbdominalShell] (0.036)
+      depth: Inside
+      groups: { ,Torso } 
+      ,
+      [RimVilos_Sternum] (0.015)
+      depth: Inside
+      groups: { ,Torso } 
+      ,
+      [RimVilos_Pelvis] (0.025)
+      depth: Inside
+      height: Bottom
+      groups: { ,Torso } 
+      ,
+      [RimVilos_Spine] (0.025)
+      depth: Inside
+      groups: { ,Torso } 
+
+      ,
+      [RimVilos_Heart] (0.015)
+      "first heart"
+      depth: Inside
+      groups: { ,Torso } 
+      ,
+      [RimVilos_Heart] (0.015)
+      "second heart"
+      depth: Inside
+      groups: { ,Torso } 
+
+      ,
+      [RimVilos_Reactor] (0.025) "left reactor"
+      depth: Inside
+      groups: { ,Torso } 
+      ,
+      [RimVilos_Reactor] (0.025) "right reactor"
+      depth: Inside
+      groups: { ,Torso } 
+ 
+      ,
+      [RimVilos_BloodFilter] (0.017)
+      "first blood filter"
+      depth: Inside
+      groups: { ,Torso } 
+      ,
+      [RimVilos_BloodFilter] (0.017)
+      "second blood filter"
+      depth: Inside
+      groups: { ,Torso } 
+
+      ,
+      [RimVilos_Neck] (0.075)
+      groups: { ,Neck }
+      height: Top
+      parts: {
+         ,
+         [RimVilos_Head] (0.80)
+         groups: { ,UpperHead ,FullHead ,HeadAttackTool }
+         parts: {
+            ,
+            [RimVilos_Skull] (0.18)
+            depth: Inside
+            groups: { ,UpperHead ,Eyes ,FullHead }
+            parts: {
+               ,
+               [RimVilos_BrainShell] (0.8)
+               groups: { ,UpperHead ,Eyes ,FullHead }
+               parts: {
+                  ,
+                  [RimVilos_BrainCore] (0.125)
+                  groups: { ,UpperHead ,Eyes ,FullHead }
+               }
+            }
+            ,
+            [RimVilos_Scanner] (0.07)
+            "left primary scanner"
+            groups: { ,UpperHead ,FullHead }
+            ,
+            [RimVilos_Scanner] (0.07)
+            "right primary scanner"
+            groups: { ,UpperHead ,FullHead }
+            ,
+            [RimVilos_Eye] (0.07)
+            "left eye"
+            groups: { ,UpperHead ,FullHead }
+            woundAnchorTag: LeftEye
+            ,
+            [RimVilos_Eye] (0.07)
+            "right eye"
+            groups: { ,UpperHead ,FullHead }
+            woundAnchorTag: RightEye 
+            ,
+            [RimVilos_Jaw] (0.15)
+            groups: { ,Teeth ,FullHead ,Mouth}
+            parts: {
+               ,
+               [RimVilos_Tongue] (0)
+               depth: Inside
+               groups: { ,FullHead }
+            } 
+         }
+      }
+ 
+      ,
+      [RimVilos_Shoulder] "superior left shoulder" (0.08)
+      woundAnchorTag: LeftShoulder
+      groups: { ,Shoulders }
+      parts: {
+         , [RimVilos_Clavicle] "superior left clavicle" (0.09)        height:Top  depth:Inside  groups:{ ,Torso }
+         , [RimVilos_Arm] "superior left arm" (0.77)                  groups:{ ,Arms }
+            parts: {
+               , [RimVilos_Humerus] "superior left humerus" (0.1)     depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Radius] "superior left radius" (0.1)       depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Hand] "superior left hand" (0.14)          height:Bottom  groups:{ ,Hands }
+                  parts: {
+                     , [RimVilos_Finger] "superior left ring finger" (0.07)      groups:{ ,Hands ,LeftHand ,SuperiorLeftHand }
+                     , [RimVilos_Finger] "superior left middle finger" (0.08)    groups:{ ,Hands ,LeftHand ,MiddleFingers ,SuperiorLeftHand }
+                     , [RimVilos_Finger] "superior left index finger" (0.07)     groups:{ ,Hands ,LeftHand ,SuperiorLeftHand }
+                     , [RimVilos_Finger] "superior left thumb" (0.08)            groups:{ ,Hands ,LeftHand ,SuperiorLeftHand }
+                  } 
+            }
+      }
+      ,
+      [RimVilos_Shoulder] "superior right shoulder" (0.08)
+      woundAnchorTag: RightShoulder
+      groups: { ,Shoulders }
+      parts: {
+         , [RimVilos_Clavicle] "superior right clavicle" (0.09)        height:Top  depth:Inside  groups:{ ,Torso }
+         , [RimVilos_Arm] "superior right arm" (0.77)                  groups:{ ,Arms }
+            parts: {
+               , [RimVilos_Humerus] "superior right humerus" (0.1)     depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Radius] "superior right radius" (0.1)       depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Hand] "superior right hand" (0.14)          height:Bottom  groups:{ ,Hands }
+                  parts: {
+                     , [RimVilos_Finger] "superior right ring finger" (0.07)      groups:{ ,Hands ,RightHand ,SuperiorRightHand }
+                     , [RimVilos_Finger] "superior right middle finger" (0.08)    groups:{ ,Hands ,RightHand ,MiddleFingers ,SuperiorRightHand }
+                     , [RimVilos_Finger] "superior right index finger" (0.07)     groups:{ ,Hands ,RightHand ,SuperiorRightHand }
+                     , [RimVilos_Finger] "superior right thumb" (0.08)            groups:{ ,Hands ,RightHand ,SuperiorRightHand }
+                  } 
+            }
+      }
+      ,
+      [RimVilos_Shoulder] "inferior left shoulder" (0.08)
+      woundAnchorTag: InferiorLeftShoulder
+      groups: { ,Shoulders }
+      parts: {
+         , [RimVilos_Clavicle] "inferior left clavicle" (0.09)        height:Top  depth:Inside  groups:{ ,Torso }
+         , [RimVilos_Arm] "inferior left arm" (0.77)                  groups:{ ,Arms }
+            parts: {
+               , [RimVilos_Humerus] "inferior left humerus" (0.1)     depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Radius] "inferior left radius" (0.1)       depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Hand] "inferior left hand" (0.14)          height:Bottom  groups:{ ,Hands }
+                  parts: {
+                     , [RimVilos_Finger] "inferior left ring finger" (0.07)      groups:{ ,Hands ,LeftHand ,InferiorLeftHand }
+                     , [RimVilos_Finger] "inferior left middle finger" (0.08)    groups:{ ,Hands ,LeftHand ,MiddleFingers ,InferiorLeftHand }
+                     , [RimVilos_Finger] "inferior left index finger" (0.07)     groups:{ ,Hands ,LeftHand ,InferiorLeftHand }
+                     , [RimVilos_Finger] "inferior left thumb" (0.08)            groups:{ ,Hands ,LeftHand ,InferiorLeftHand }
+                  } 
+            }
+      }
+      ,
+      [RimVilos_Shoulder] "inferior right shoulder" (0.08)
+      woundAnchorTag: InferiorRightShoulder
+      groups: { ,Shoulders }
+      parts: {
+         , [RimVilos_Clavicle] "inferior right clavicle" (0.09)        height:Top  depth:Inside  groups:{ ,Torso }
+         , [RimVilos_Arm] "inferior right arm" (0.77)                  groups:{ ,Arms }
+            parts: {
+               , [RimVilos_Humerus] "inferior right humerus" (0.1)     depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Radius] "inferior right radius" (0.1)       depth:Inside  groups:{ ,Arms }
+               , [RimVilos_Hand] "inferior right hand" (0.14)          height:Bottom  groups:{ ,Hands }
+                  parts: {
+                     , [RimVilos_Finger] "inferior right ring finger" (0.07)      groups:{ ,Hands ,RightHand ,InferiorRightHand }
+                     , [RimVilos_Finger] "inferior right middle finger" (0.08)    groups:{ ,Hands ,RightHand ,MiddleFingers ,InferiorRightHand }
+                     , [RimVilos_Finger] "inferior right index finger" (0.07)     groups:{ ,Hands ,RightHand ,InferiorRightHand }
+                     , [RimVilos_Finger] "inferior right thumb" (0.08)            groups:{ ,Hands ,RightHand ,InferiorRightHand }
+                  } 
+            }
+      }
+
+
+      ,
+      [Waist]
+      coverage: 0
+      height: Bottom
+      groups: { ,Waist }
+
+
+      ,
+      [RimVilos_DorsalAntennaArray] (0.0125)
+      height: Bottom
+      parts: {
+         , [RimVilos_DorsalAntenna] (0.125) "first dorsal antenna"  groups:{ ,DorsalAntenna }
+         , [RimVilos_DorsalAntenna] (0.125) "second dorsal antenna" groups:{ ,DorsalAntenna }
+         , [RimVilos_DorsalAntenna] (0.125) "third dorsal antenna"  groups:{ ,DorsalAntenna }
+      } 
+
+      ,
+      [RimVilos_Tail] "tail" (0.07)
+      height: Bottom
+      groups: { ,TailAttackTool }
+
+      ,
+      [RimVilos_Leg] "left leg" (0.14)
+      height:Bottom groups:{ ,Legs }
+      woundAnchorTag: LeftLeg
+      parts: {
+         , [RimVilos_Femur] "left femur" (0.1) depth:Inside groups:{ ,Legs }
+         , [RimVilos_Tibia] "left tibia" (0.1) depth:Inside groups:{ ,Legs }
+         , [RimVilos_Foot]  "left foot" (0.1) groups:{ ,Feet }
+            parts: {
+               , [RimVilos_Toe] "left third toe"  (0.07) groups:{ ,Feet }
+               , [RimVilos_Toe] "left middle toe" (0.08) groups:{ ,Feet }
+               , [RimVilos_Toe] "left first toe"  (0.09) groups:{ ,Feet }
+            } 
+      }
+      ,
+      [RimVilos_Leg] "right leg" (0.14)
+      height:Bottom groups:{ ,Legs }
+      woundAnchorTag: RightLeg
+      parts: {
+         , [RimVilos_Femur] "right femur" (0.1) depth:Inside groups:{ ,Legs }
+         , [RimVilos_Tibia] "right tibia" (0.1) depth:Inside groups:{ ,Legs }
+         , [RimVilos_Foot]  "right foot" (0.1) groups:{ ,Feet }
+            parts: {
+               , [RimVilos_Toe] "right third toe"  (0.07) groups:{ ,Feet }
+               , [RimVilos_Toe] "right middle toe" (0.08) groups:{ ,Feet }
+               , [RimVilos_Toe] "right first toe"  (0.09) groups:{ ,Feet }
+            } 
+      } 
+
+   }
+</corePart>
+</BodyDef>
+
+</Defs>

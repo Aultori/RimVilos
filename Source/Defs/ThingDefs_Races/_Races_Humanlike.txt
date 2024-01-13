@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+   ThingDef[ParentName="BasePawn"] {
+      defName: Human
+      label: human
+      description: A baseline human, mostly unmodified by gene engineering and mostly unchanged by evolutionary pressures on non-Earth planets.
+      statBases {
+         MarketValue: 1750
+         MoveSpeed: 4.6
+         ComfyTemperatureMin: 16
+         ComfyTemperatureMax: 26
+         LeatherAmount: 75
+         RoyalFavorValue: 3
+      }
+
+      tools
+      { 
+         li {
+           label: left fist
+           capacities:
+              li: Blunt
+           power: 8.2
+           cooldownTime: 2
+           linkedBodyPartsGroup: LeftHand
+           surpriseAttack:
+              extraMeleeDamages:
+                 li { def:Stun amount:14 } 
+         }
+         li {
+            label: right fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: RightHand
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
+         }
+         li {
+            label: teeth
+            capacities:
+               li: Bite
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: Teeth
+            chanceFactor: 0.07
+            soundMeleeHit: Pawn_Melee_HumanBite_Hit
+            soundMeleeMiss: Pawn_Melee_HumanBite_Miss
+         }
+         li {
+            label: head
+            capacities:
+               li: Blunt
+            power: 5
+            cooldownTime: 2
+            linkedBodyPartsGroup: HeadAttackTool
+            ensureLinkedBodyPartsGroupAlwaysUsable: true
+            chanceFactor: 0.2
+         } 
+      }
+
+      race
+      { 
+         thinkTreeMain:     Humanlike
+         thinkTreeConstant: HumanlikeConstant
+         intelligence:      Humanlike
+         makesFootprints: true
+         lifeExpectancy: 80
+         leatherDef: Leather_Human
+         nameCategory: HumanStandard
+         body: Human
+         baseBodySize: 1
+         baseHealthScale: 1
+         foodType: OmnivoreHuman
+         gestationPeriodDays: 18
+         meatMarketValue: 0.8
+         manhunterOnDamageChance: 0.50
+         manhunterOnTameFailChance: 0.10
+         soundCallIntervalRange: 2000~5000 
+
+         litterSizeCurve:
+            points:
+               li: (0.5, 0)
+               li: (1, 1)
+               li: (1.01, 0.02)
+               li: (3.5, 0)
+         lifeStageAges:
+            li { def:HumanlikeBaby        minAge:0 }
+            li { def:HumanlikeChild       minAge:3 }
+            li { def:HumanlikePreTeenager minAge:9 } [MayRequire="Ludeon.RimWorld.Biotech"]
+            li { def:HumanlikeTeenager    minAge:13 }
+            li { def:HumanlikeAdult       minAge:18 }
+         lifeStageWorkSettings[MayRequire="Ludeon.RimWorld.Biotech"]:
+            Firefighter: 7
+            Patient: 0
+            Doctor: 10
+            PatientBedRest: 0
+            Childcare: 0      [MayRequire="Ludeon.RimWorld.Biotech"]
+            BasicWorker: 3
+            Warden: 10
+            Handling: 7
+            Cooking: 7
+            Hunting: 7
+            Construction: 10
+            Growing: 7
+            Mining: 7
+            PlantCutting: 7
+            Smithing: 13
+            Tailoring: 7
+            Art: 10
+            Crafting: 7
+            Hauling: 3
+            Cleaning: 3
+            Research: 13
+
+         soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
+         soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
+         soundMeleeMiss: Pawn_Melee_Punch_Miss
+         soundMeleeDodge: Pawn_MeleeDodge 
+         specialShadowData:
+            volume: (0.3, 0.8, 0.4)
+            offset: (0,0,-0.3)
+
+         ageGenerationCurve/points:
+            li: (0,0)         [MayRequire="Ludeon.RimWorld.Biotech"]
+            li: (0.001,43)    [MayRequire="Ludeon.RimWorld.Biotech"]
+            li: (8,86)        [MayRequire="Ludeon.RimWorld.Biotech"]
+            li: (12.5,118)    [MayRequire="Ludeon.RimWorld.Biotech"]
+            <!-- Exclude 12.5-13 years to avoid spawning pawns who are very close to becoming adults -->  
+            li: (12.51,0)     [MayRequire="Ludeon.RimWorld.Biotech"]  
+            li: (13,0)        [MayRequire="Ludeon.RimWorld.Biotech"]      
+            li: (13.001,122)  [MayRequire="Ludeon.RimWorld.Biotech"]
+            <!-- End exclude -->
+            li: (13.999,130)  [MayRequire="Ludeon.RimWorld.Biotech"]
+            li: (14,0)
+            li: (14.001,130)  [MayRequire="Ludeon.RimWorld.Biotech"]
+            li: (16,100)
+            li: (50,100)
+            li: (60,30)
+            li: (70,18)
+            li: (80,10)
+            li: (90,3)
+            li: (100,0)
+
+         hediffGiverSets:
+            li: OrganicStandard
+            li: Human
+
+      }
+      recipes {
+         li: ExciseCarcinoma
+         li: AdministerMechSerumHealer
+         li: RemoveBodyPart
+         li: Euthanize
+         li: Anesthetize
+         li: CureScaria
+         li: Vasectomy   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ReverseVasectomy   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: TubalLigation   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ExtractOvum   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: CureBloodRot   [MayRequire="Ludeon.RimWorld.Royalty"]
+         li: CureAbasia   [MayRequire="Ludeon.RimWorld.Royalty"]
+         li: ExtractHemogenPack   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: BloodTransfusion   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ImplantXenogerm   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ImplantIUD   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: RemoveIUD   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: TerminatePregnancy   [MayRequire="Ludeon.RimWorld.Biotech"]
+      }
+      ingredient {
+         mergeCompatibilityTags:
+            li: HumanMeat 
+      }
+   } 
+
+</Defs>

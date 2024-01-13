@@ -1,0 +1,398 @@
+#<?xml version="1.0" encoding="utf-8" ?>
+Defs:
+
+#<!--======== Groups ========-->
+
+   BodyPartGroupDef:
+      defName: ScannerArray
+      label: scanner array
+
+   BodyPartGroupDef:
+      defName: AntennaArray
+      label: antenna array
+
+   BodyPartGroupDef:
+      defName: DorsalAntenna
+      label: dorsal antenna
+   
+   BodyPartGroupDef:
+      defName: TailAttackTool
+      label: tail
+
+   BodyPartGroupDef:
+      defName: SuperiorHands
+      label: superior hands
+   BodyPartGroupDef:
+      defName: InferiorHands
+      label: inferior hands
+
+   BodyPartGroupDef:
+      defName: SuperiorLeftHand
+      label: superior left fist
+      labelShort: superior left fist 
+   BodyPartGroupDef:
+      defName: SuperiorRightHand
+      label: superior right fist
+      labelShort: superior right fist 
+
+   BodyPartGroupDef:
+      defName: InferiorLeftHand
+      label: inferior left fist
+      labelShort: inferior left fist
+   BodyPartGroupDef:
+      defName: InferiorRightHand
+      label: inferior right fist
+      labelShort: inferior right fist 
+
+#<!--======== Body Parts ========-->
+
+   BodyPartDef:
+      defName: RimVilos_Torso
+      label:   torso
+      hitPoints: 40
+      +skinCovered
+      -canScarify
+      -canSuggestAmputation
+
+   BodyPartDef:
+      defName: RimVilos_Shoulder
+      label:   shoulder
+      hitPoints: 30
+      +skinCovered
+      tags:
+         li: ManipulationLimbSegment
+
+   BodyPartDef:
+      defName: RimVilos_Arm
+      label:   arm
+      hitPoints: 30
+      +skinCovered
+      tags:
+         li: ManipulationLimbCore
+
+   BodyPartDef:
+      defName: RimVilos_Hand
+      label:   hand
+      hitPoints: 20
+      +skinCovered
+      tags:
+         li: ManipulationLimbSegment
+
+   BodyPartDef:
+      defName: RimVilos_Finger
+      label:   finger
+      hitPoints: 8
+      +skinCovered
+      tags:
+         li: ManipulationLimbDigit
+
+   BodyPartDef:
+      defName: Waist
+      label:   utility slot
+      +conceptual
+
+   BodyPartDef:
+      defName: RimVilos_Tail
+      label:   tail
+      hitPoints: 32
+      +skinCovered
+
+   BodyPartDef:
+      defName: RimVilos_Toe
+      label:   toe
+      hitPoints: 8
+      +skinCovered
+      tags:
+         li: MovingLimbDigit
+
+#<!--======== Bones ========-->
+
+   BodyPartDef:
+      defName: RimVilos_Clavicle
+      label:   clavicle
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: ManipulationLimbSegment
+      -destroyableByDamage
+
+   BodyPartDef:
+      defName: RimVilos_Sternum
+      label:   sternum
+      hitPoints: 20
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      -destroyableByDamage
+
+   BodyPartDef:
+      defName: RimVilos_Humerus
+      label:   humerus
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: ManipulationLimbSegment
+ 
+   BodyPartDef:
+      defName: RimVilos_Radius
+      label:   radius
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: ManipulationLimbSegment
+
+   BodyPartDef:
+      defName: RimVilos_Pelvis
+      label:   pelvis
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: Pelvis
+      -destroyableByDamage
+
+   BodyPartDef:
+      defName: RimVilos_Femur
+      label:   femur
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: MovingLimbSegment
+
+   BodyPartDef:
+      defName: RimVilos_Tibia
+      label:   tibia
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid
+      bleedRate: 0
+      tags:
+         li: MovingLimbSegment 
+
+
+#<!--======== Organs ========-->
+
+   BodyPartDef:
+      defName: RimVilos_Heart
+      label:   heart
+      hitPoints: 15
+      bleedRate: 5
+      -skinCovered
+      tags:
+         li: BloodPumpingSource
+      spawnThingOnRemoved: Heart
+ //     -canSuggestAmputation
+
+   BodyPartDef:
+      defName: RimVilos_Reactor
+      label:   reactor
+      hitPoints: 32
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid bleedRate: 0
+      -alive
+      tags:
+         li: BloodPumpingSource
+
+   BodyPartDef:
+      defName: RimVilos_BloodFilter
+      label:   blood filter
+      hitPoints: 15
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid bleedRate: 0
+      tags:
+         li: BloodFiltrationSource
+
+
+#<!--======== General ========-->
+
+   BodyPartDef:
+      defName: RimVilos_Head
+      label:   head
+      hitPoints: 25
+      bleedRate: 2
+      +skinCovered
+      -canSuggestAmputation
+
+   BodyPartDef:
+      defName: RimVilos_Skull
+      label:   skull
+      hitPoints: 25
+      permanentInjuryChanceFactor: 0
+      +solid bleedRate: 0
+      -skinCovered
+      -canSuggestAmputation
+      -destroyableByDamage
+
+   BodyPartDef:
+      defName: RimVilos_BrainShell
+      label:   brain shell
+      hitPoints: 32
+      +solid bleedRate: 0
+      -delicate
+      -skinCovered
+      //-canSuggestAmputaton
+
+   BodyPartDef:
+      defName: RimVilos_BrainCore
+      label:   brain core
+      hitPoints: 8
+      permanentInjuryChanceFactor: 99999999
+      +solid bleedRate: 0
+      +delicate
+      -skinCovered
+      -alive
+      tags:
+         li: ConsciousnessSource
+      //-canSuggestAmputaton
+
+   BodyPartDef:
+      defName: RimVilos_Eye
+      label:   eye
+      hitPoints: 10
+      frostbiteVulnerability: 2
+      permanentInjuryChanceFactor: 15
+      +delicate
+      -skinCovered
+      +canScarify
+      +socketed
+      +beautyRelated
+      tags:
+         li: SightSource
+      hitChanceFactors:
+         li:
+            key: Blunt
+            value: 0
+
+   BodyPartDef:
+      defName: RimVilos_Scanner
+      label:   scanner
+      hitPoints: 20
+      +solid bleedRate: 0
+      -delicate
+      -alive
+      -skinCovered
+      +beautyRelated
+      tags:
+         li: HearingSource
+         li: TalkingSource
+         li: SightSource
+
+   BodyPartDef:
+      defName: RimVilos_Antenna
+      label:   antenna
+      hitPoints: 10
+      -solid
+      bleedRate: 0
+      -delicate
+      -alive
+      -skinCovered
+      +beautyRelated
+      tags:
+         li: HearingSource
+         li: TalkingSource
+
+   BodyPartDef:
+      defName: RimVilos_DorsalAntenna
+      label:   dorsal antenna
+      hitPoints: 10
+      -solid bleedRate: 0
+      -delicate
+      -alive
+      -skinCovered
+      +beautyRelated
+      tags:
+         li: HearingSource
+         li: TalkingSource
+
+   BodyPartDef:
+      defName: RimVilos_DorsalAntennaArray
+      label:   dorsal antenna array
+      hitPoints: 20
+      -solid bleedRate: 0
+      -delicate
+      -alive
+      -skinCovered
+   
+   BodyPartDef:
+      defName: RimVilos_Jaw
+      label:   jaw
+      hitPoints: 20
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid bleedRate: 0
+      +beautyRelated
+      tags:
+         li: EatingSource
+
+   BodyPartDef:
+      defName: RimVilos_Neck
+      label:   neck
+      hitPoints: 25
+      bleedRate: 4
+      +skinCovered
+      tags:
+         li: EatingPathway
+      -canSuggestAmputation
+
+   BodyPartDef:
+      defName: RimVilos_AbdominalShell
+      label:   abdominal shell
+      hitPoints: 64
+      permanentInjuryChanceFactor: 0
+      -skinCovered
+      +solid bleedRate: 0
+      -destroyableByDamage
+      -canSuggestAmputation
+
+   BodyPartDef:
+      defName: RimVilos_Spine
+      label:   spine
+      hitPoints: 25
+      permanentInjuryChanceFactor: 6
+      -skinCovered
+      +solid bleedRate: 0
+      -canSuggestAmputation
+      tags:
+         li: Spine
+
+   BodyPartDef:
+      defName: RimVilos_Leg
+      label:   leg
+      hitPoints: 32
+      +skinCovered
+      +canScarify
+      tags:
+         li: MovingLimbCore
+
+   BodyPartDef:
+      defName: RimVilos_Foot
+      label:   foot
+      hitPoints: 25
+      +skinCovered
+      tags:
+         li: MovingLimbSegment
+
+   BodyPartDef:
+      defName: RimVilos_Tongue
+      label:   tongue
+      -skinCovered
+      bleedRate: 0
+      +beautyRelated
