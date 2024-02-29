@@ -10,8 +10,8 @@ namespace RimVilos
         public override bool HasCulture(Pawn pawn)
         {
             return  pawn != null && 
-                 (  pawn.RaceProps.FleshType == RimVilos_FleshTypeDefOf.VilosNormal
-                 || pawn.RaceProps.FleshType == RimVilos_FleshTypeDefOf.VilosMech);
+                 (  pawn.RaceProps.FleshType == FleshTypeDefOf.VilosNormal
+                 || pawn.RaceProps.FleshType == FleshTypeDefOf.VilosMech);
         }
     }
 }

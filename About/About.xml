@@ -16,6 +16,7 @@
 		<li>Ludeon.RimWorld.Ideology</li>
 		<li>Ludeon.Rimworld.Biotech</li>
 		<li>brrainz.harmony</li>
+		<li>aultori.AultoLib</li>
 	</loadAfter>
 	<supportedVersions>
 		<li>1.4</li>

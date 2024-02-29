@@ -27,8 +27,6 @@
 
 	<ItemGroup>
 		<Folder Include="1.4\Assemblies\" />
-		<Folder Include="Source\Defs\Misc\FleshTypeDefs\" />
-		<Folder Include="Source\Defs\CultureDefs\" />
 	</ItemGroup>
 
 	<ItemGroup>

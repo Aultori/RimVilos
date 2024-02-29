@@ -5,7 +5,7 @@ using Verse;
 namespace RimVilos
 {
     [DefOf]
-    public static class RimVilos_DefOf
+    public static class ThingDefOf
     {
         public static ThingDef VilosRace; 
     }

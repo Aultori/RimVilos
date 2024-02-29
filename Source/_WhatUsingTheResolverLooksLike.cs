@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RimVilos
 {
-    public class LoadedCulture
+    public class _WhatUsingTheResolverLooksLike
     {
     }
 }

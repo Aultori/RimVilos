@@ -5,11 +5,11 @@ using Verse;
 namespace RimVilos
 {
     [DefOf]
-    public static class RimVilos_FleshTypeDefOf
+    public static class FleshTypeDefOf
     { 
-        static RimVilos_FleshTypeDefOf()
+        static FleshTypeDefOf()
         {
-            DefOfHelper.EnsureInitializedInCtor(typeof(RimVilos_FleshTypeDefOf));
+            DefOfHelper.EnsureInitializedInCtor(typeof(FleshTypeDefOf));
         }
 
         public static FleshTypeDef VilosNormal;
