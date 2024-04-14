@@ -1,0 +1,155 @@
+Defs:
+   
+   Def <AultoLib.RulesetDef> {
+      defName: GlobalUtility_Vilos
+      society: vilos
+      category: none
+      ruleset {
+         includedDefs:
+            li: TalkTopicsUtility_Vilos
+         rulesStrings {
+            li: Trans->of
+            li: Trans->for
+            li: Trans->by
+            li: Trans->with
+            li: Character(p=6)->[PersonJob]
+            li: Character(p=4)->[Animal]
+            li: Character(p=3)->[Enemy]
+            li: Character->[Mechanoid]
+            li: Quantity_adjphrase->two
+            li: Quantity_adjphrase->three
+            li: Quantity_adjphrase->four
+            li: Quantity_adjphrase->five
+            li: Quantity_adjphrase->six
+            li: Quantity_adjphrase->seven
+            li: Quantity_adjphrase->eight
+            li: Quantity_adjphrase->nine
+            li: Quantity_adjphrase->ten
+            li: Quantity_adjphrase->several
+            li: Quantity_adjphrase->a group of
+            li: Quantity_adjphrase->a large group of
+            li: Quantity_adjphrase->dozens of
+            li: Quantity_adjphrase->hundreds of
+            li: Quantity_adjphrase->a thousand
+            li: Quantity_adjphrase->thousands of
+            li: Shape->triangle
+            li: Shape->square
+            li: Shape->rectangle
+            li: Shape->cone
+            li: Shape->line
+            li: Shape->heart
+            li: Shape->star
+            li: Shape->circle
+            li: Shape->ellipse
+            li: AdjectiveAny->[AdjectiveBadass]
+            li: AdjectiveAny->[AdjectiveAngsty]
+            li: AdjectiveAny->[AdjectiveFriendly]
+            li: AdjectiveAny->[AdjectiveNatural]
+            li: ConceptAny->[ConceptPositive]
+            li: ConceptAny->[ConceptBadass]
+            li: ConceptAny->[ConceptAngsty]
+            // li: PersonalCharacteristic(p=0.15)->genitals
+            // li: PersonalCharacteristic(p=0.15)->pubic hair
+            // li: PersonalCharacteristic(p=0.15)->body hair
+            // li: PersonalCharacteristic(p=0.15)->toilet habits
+            // li: PersonalCharacteristic(p=0.15)->sexual prowess
+            // li: PersonalCharacteristic(p=0.15)->sexual preferences
+            // li: PersonalCharacteristic(p=0.15)->sexual experience
+         }
+         rulesFiles {
+            li: RomanNumeral->Words/Misc/Numbers_SmallRoman
+            li: Direction->Words/Adjectives/CompassDirections
+            li: Letter->WordParts/CapitalLetters
+            li: SylE->WordParts/Syllables_English
+            li: SylG->WordParts/Syllables_Galician
+            li: SylB->WordParts/Syllables_Byzantinian
+            li: SylP->WordParts/Syllables_Pig
+            li: Color->Words/Nouns/Colors
+            li: ColorBadass->Words/Nouns/Colors_Badass
+            li: Vegetable->Words/Nouns/Vegetables
+            li: Game->Words/Nouns/Games
+            li: Animal->Words/Nouns/Animals
+            li: AnimalBadass->Words/Nouns/Animals_Badass
+            li: AnimalGroup->Words/Nouns/AnimalGroups
+            li: Weapon->Words/Nouns/Weapons
+            li: TerrainFeature->Words/Nouns/TerrainFeatures
+            li: NaturalObject->Words/Nouns/NaturalObject
+            li: TreeType->Words/Nouns/TreeTypes
+            li: PersonJob->Words/Nouns/People_Jobs
+            li: PersonFamily->Words/Nouns/People_Family
+            li: PersonAlly->Words/Nouns/People_Allies
+            li: PersonBadass->Words/Nouns/People_Badass
+            li: Enemy->Words/Nouns/Enemies
+            li: Apparel->Words/Nouns/Apparel
+            li: Gore->Words/Nouns/Gore
+            li: Mechanoid->Words/Nouns/Mechanoid
+            li: ConceptPositive->Words/Nouns/Concepts_Positive
+            li: ConceptBadass->Words/Nouns/Concepts_Badass
+            li: ConceptAngsty->Words/Nouns/Concepts_Angsty
+            li: Community->Words/Nouns/Communities
+            li: BodyPart->Words/Nouns/Bodyparts
+            li: AdjectiveLarge->Words/Adjectives/Large
+            li: AdjectiveBadass->Words/Adjectives/Badass
+            li: AdjectiveAngsty->Words/Adjectives/Angsty
+            li: AdjectiveFriendly->Words/Adjectives/Friendly
+            li: AdjectiveNatural->Words/Adjectives/Natural
+            li: VerbFriendly->Words/Verbs/Friendly
+            li: PersonalCharacteristic->Words/Nouns/PersonalCharacteristics
+            li: FavoriteBodyparts->Words/Nouns/FavoriteBodyparts
+         }
+      }
+   }
+
+   Def <AultoLib.RulesetDef> {
+      defName: TalkTopicsUtility_Vilos
+      society: vilos
+      category: none
+      ruleset {
+         rulesStrings {
+            li: TalkTopicAny->[TalkTopicLight]
+            li: TalkTopicAny->[TalkTopicHeavy]
+
+            li: TalkTopicHeavy->[talktopicheavyfile]
+            li: TalkTopicHeavy(p=0.08)->the link between [talktopicheavyfile] and [talktopicheavyfile]
+            li: TalkTopicHeavy(p=0.08)->the connection between [talktopicheavyfile] and [talktopicheavyfile]
+            li: TalkTopicHeavy(p=0.08)->the relationship between [talktopicheavyfile] and [talktopicheavyfile]
+
+            li: TalkTopicLight(p=25)->[talktopiclightfile]
+            // li: TalkTopicLight->[Vegetable]s
+            // li: TalkTopicLight->eating [Vegetable]s
+            // li: TalkTopicLight->cooking with [Vegetable]s
+            li: TalkTopicLight->[Game]
+            li: TalkTopicLight->playing [Game]
+            li: TalkTopicLight->practicing [Game]
+            li: TalkTopicLight->learning [Game]
+            li: TalkTopicLight->[Animal]s
+            li: TalkTopicLight->training [Animal]s
+            li: TalkTopicLight->taming [Animal]s
+            li: TalkTopicLight->fighting [Animal]s
+            li: TalkTopicLight->crazy [Animal]s
+            li: TalkTopicLight->[Weapon]s
+            li: TalkTopicLight->using [Weapon]s
+            li: TalkTopicLight->practicing with [Weapon]s
+            li: TalkTopicLight->[TerrainFeature]s
+            li: TalkTopicLight->[NaturalObject]s
+            // li: TalkTopicLight->[TreeType] trees
+            li: TalkTopicLight->[PersonJob]s
+            // li: TalkTopicLight->friendly [PersonJob]s
+            // li: TalkTopicLight->hostile [PersonJob]s
+            li: TalkTopicLight->[Enemy]s
+            li: TalkTopicLight->fighting [Enemy]s
+            li: TalkTopicLight->[Apparel]s
+            // li: TalkTopicLight->wearing [Apparel]s
+            // li: TalkTopicLight->making [Apparel]s
+
+            // li: talktopicheavyfile(p=0.15)->sex
+            // li: talktopicheavyfile(p=0.15)->seduction
+            // li: talktopicheavyfile(p=0.15)->animal sexuality
+            // li: talktopicheavyfile(p=0.15)->sexual fetishes
+         }
+         rulesFiles {
+            li: talktopicheavyfile->Words/Nouns/TalkTopics_Heavy
+            li: talktopiclightfile->Words/Nouns/TalkTopics_Light
+         }
+      }
+   }

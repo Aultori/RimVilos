@@ -1,4 +1,3 @@
-#<?xml version="1.0" encoding="utf-8" ?>
 Defs:
 
 #<!--======== Groups ========-->
@@ -208,7 +207,7 @@ Defs:
       +solid bleedRate: 0
       -alive
       tags:
-         li: BloodPumpingSource
+         li: VilosEnergySource
 
    BodyPartDef:
       defName: RimVilos_BloodFilter
@@ -230,6 +229,8 @@ Defs:
       bleedRate: 2
       +skinCovered
       -canSuggestAmputation
+      tags:
+         li: TalkingSource
 
    BodyPartDef:
       defName: RimVilos_Skull
@@ -292,8 +293,7 @@ Defs:
       +beautyRelated
       tags:
          li: HearingSource
-         li: TalkingSource
-         li: SightSource
+         li: ScanningSource
 
    BodyPartDef:
       defName: RimVilos_Antenna
@@ -306,8 +306,8 @@ Defs:
       -skinCovered
       +beautyRelated
       tags:
-         li: HearingSource
-         li: TalkingSource
+         li: EMBroadcastingSource
+         li: EMReceivingSource
 
    BodyPartDef:
       defName: RimVilos_DorsalAntenna
@@ -319,8 +319,8 @@ Defs:
       -skinCovered
       +beautyRelated
       tags:
-         li: HearingSource
-         li: TalkingSource
+         li: EMBroadcastingSource
+         li: EMReceivingSource
 
    BodyPartDef:
       defName: RimVilos_DorsalAntennaArray

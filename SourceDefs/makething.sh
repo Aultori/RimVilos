@@ -1,37 +1,103 @@
 #!/bin/bash
 
-cd './Defs'
+echo Building Defs
 
-SOURCEDIR='./'
-TARGETDIR='../../1.4/Defs'
+if [ -d SourceDefs ]
+then
+   cd SourceDefs
+fi
 
+TARGETDIR="../1.5"
 
-function parse_bodiesxml {
-   for file in `find $SOURCEDIR -type f -name "*.bodiesxml"`
+error=0
+
+# first parameter is the name of the directory to search in
+function parse_bodiesxml () {
+   # [[ -z $1 ]] || return # if a parameter wasn't provided
+
+   for file in `find $1 -type f -name "*.bodiesxml"`
    do
-      mkdir -p $(dirname ${TARGETDIR}/$file)
-      echo "parsing $file"
-      perl ${SOURCEDIR}/bodiesxml.pl ${SOURCEDIR}/$file > ${TARGETDIR}/${file/%.bodiesxml/.xml}
+      # $file doesn't nee $1 prepended to it
+      outfile="${file/%.bodiesxml/.xml}"
+      mkdir -p $(dirname $TARGETDIR/$outfile)
+      #if [$(date -r ./$file) -ne $(date -r $TARGETDIR/$outfile)]
+      if [ $file -nt $TARGETDIR/$outfile ]
+      then
+         echo "parsing $file"
+         perl bodiesxml.pl $file > $TARGETDIR/$outfile
+      fi
    done
 }
 function parse_myxml {
-   for file in `find $SOURCEDIR -type f -name "*.myxml"`
+   # [[ -z $1 ]] || return # if a parameter wasn't provided
+
+   for file in `find $1 -type f -name "*.myxml"`
    do
-      mkdir -p $(dirname ${TARGETDIR}/$file)
-      echo "parsing $file"
-      perl ${SOURCEDIR}/myxml.pl ${SOURCEDIR}/$file > ${TARGETDIR}/${file/%.myxml/.xml}
+      outfile="${file/%.myxml/.xml}"
+      mkdir -p $(dirname $TARGETDIR/$outfile)
+      if [ $file -nt $TARGETDIR/$outfile ]
+      then
+         echo "parsing $file"
+         # perl myxml.pl $file > $TARGETDIR/$outfile 2> /tmp/Error
+         # tmp=$?
+         # err=$(</tmp/Error)
+
+         ## trying to print the error as a message that'll be recognized by the debuger
+         ## I can't get it to work
+
+         perl myxml.pl $file 2> /tmp/Error > /tmp/Out
+         tmp=$?
+         err=$(</tmp/Error)
+         something=$(</tmp/Out)
+         if [ $tmp -eq 0 ]
+         then 
+            cat /tmp/Out > $TARGETDIR/$outfile 
+         else
+            echo $err
+            # echo "got here"
+            error=1
+         fi
+         rm /tmp/Out
+      fi 
    done
 } 
 function copy_xml {
-   for file in `find $SOURCEDIR -type f -name "*.xml"`
+   # [[ -z $1 ]] || return # if a parameter wasn't provided
+
+   for file in `find $1 -type f -name "*.xml"`
    do
-      mkdir -p $(dirname ${TARGETDIR}/$file)
-      echo "copying $file"
-      cat ${SOURCEDIR}/$file > ${TARGETDIR}/$file
+      outfile=$file
+      mkdir -p $(dirname $TARGETDIR/$outfile)
+      if [ $file -nt $TARGETDIR/$outfile ]
+      then
+         echo "copying $file"
+         cat $file > $TARGETDIR/$outfile
+      fi
+   done
+}
+
+function copy_txt {
+   # [[ -z $1 ]] || return # if a parameter wasn't provided
+
+   for file in `find $1 -type f -name "*.txt"`
+   do
+      outfile=$file
+      mkdir -p $(dirname $TARGETDIR/$outfile)
+      if [ $file -nt $TARGETDIR/$outfile ]
+      then
+         echo "copying $file"
+         cat $file > $TARGETDIR/$outfile
+      fi
    done
 }
 
 
-parse_bodiesxml
-parse_myxml
-copy_xml 
+
+
+parse_bodiesxml "Defs"
+parse_myxml "Defs"
+copy_xml "Defs"
+
+copy_txt "Societies"
+
+[ $error -eq 0 ] || exit 1

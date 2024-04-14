@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
+<?xml version="1.0" encoding="utf-8" ?><Defs>
   
   <ThingDef ParentName="BasePawn" Name="BaseVilos" Abstract="True">
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
@@ -124,6 +123,7 @@
     <description>Vilos are a race of synthetic creatures that often resemble dragons. They are very technologically advanced, their society existing for thousands, possibly millions of years after entering the space age.</description>
     
     <race>
+      <fleshType>VilosNormal</fleshType>
       <body>RimVilos_HumanoidFourArms</body>
     </race>
     <tools>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?><Defs>
+  
+  <!-- for vilos reactors -->
+  <PawnCapacityDef>
+    <defName>VilosEnergyGeneration</defName>
+    <label>energy generation</label>
+    <!-- same listOrder as Metabolism -->
+    <listOrder>110</listOrder>
+    <workerClass>RimVilos.PawnCapacityWorker_VilosEnergyGeneration</workerClass>
+    <lethalFlesh>true</lethalFlesh>
+  </PawnCapacityDef>
+</Defs>

@@ -1,0 +1,11 @@
+Defs:
+
+   // for vilos reactors
+   PawnCapacityDef {
+      defName: VilosEnergyGeneration
+      label: energy generation
+      // same listOrder as Metabolism
+      listOrder: 110
+      workerClass: RimVilos.PawnCapacityWorker_VilosEnergyGeneration
+      lethalFlesh: true
+   }

@@ -1,0 +1,28 @@
+// Basic Jobs
+miner
+
+// Outlander?
+adventurer
+smuggler
+comedian
+actor
+artist
+poet
+writer
+battle mech pilot
+racer
+
+// Academic
+scientist
+physicist
+chemist
+philosopher
+mathematician
+astronomer
+
+// Advanced Jobs
+fabricator
+Dyson sphere engineer
+reactor engineer
+neuralcybersecurity specialist
+hacker

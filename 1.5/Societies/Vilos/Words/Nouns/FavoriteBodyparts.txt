@@ -1,0 +1,23 @@
+head
+teeth
+face
+snoot
+snout
+
+fur
+fluff
+arms
+paws
+beans
+claws
+
+antenna
+scanners
+dorsal antenna
+dorsal scanners
+
+hips
+tail
+tail
+legs
+feet

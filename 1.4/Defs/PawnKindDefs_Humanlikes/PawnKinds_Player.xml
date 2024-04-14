@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
+<?xml version="1.0" encoding="utf-8" ?><Defs>
   
   <PawnKindDef Abstract="True" Name="RimVilos_BasePlayerPawnKind">
     <race>VilosRace</race>

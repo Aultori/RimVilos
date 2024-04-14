@@ -7,17 +7,36 @@
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<RootNamespace>RimVilos</RootNamespace>
-		<OutputPath>1.4/Assemblies</OutputPath>
+		<OutputPath>1.5/Assemblies</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Cultures\Vilos\Words\Nouns\Gore.txt" />
-	  <None Remove="Cultures\Vilos\Words\Nouns\Stories.txt" />
+	  <Compile Remove="obj\**" />
+	  <Compile Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <Compile Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <Compile Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <Compile Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <Compile Remove="Source\AI\**" />
+	  <Compile Remove="Source\Cultures\**" />
+	  <EmbeddedResource Remove="obj\**" />
+	  <EmbeddedResource Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <EmbeddedResource Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <EmbeddedResource Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <EmbeddedResource Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <EmbeddedResource Remove="Source\AI\**" />
+	  <EmbeddedResource Remove="Source\Cultures\**" />
+	  <None Remove="obj\**" />
+	  <None Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <None Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <None Remove="SourceDefs\Societies\Vilos\Words\Adjectives\**" />
+	  <None Remove="SourceDefs\Societies\Vilos\Words\Verbs\**" />
+	  <None Remove="Source\AI\**" />
+	  <None Remove="Source\Cultures\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="Cultures\Vilos\Words\Nouns\Gore.txt" />
-	  <Compile Include="Cultures\Vilos\Words\Nouns\Stories.txt" />
+	  <Compile Remove="Source\ResolverDebugTests.cs" />
+	  <Compile Remove="Source\ViloslikePawnUtil.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,6 +46,20 @@
 
 	<ItemGroup>
 		<Folder Include="1.4\Assemblies\" />
+		<Folder Include="1.4\Defs\PawnKindDefs_Humanlikes\" />
+		<Folder Include="1.4\Defs\ThingDefs_Races\" />
+		<Folder Include="1.5\" />
+		<Folder Include="SourceDefs\Defs\InteractionInstanceDefs\" />
+		<Folder Include="SourceDefs\Defs\CommunicationDefs\" />
+		<Folder Include="SourceDefs\Defs\CapacityDefs\" />
+		<Folder Include="SourceDefs\Defs\CustomProperties\" />
+		<Folder Include="SourceDefs\Defs\Rulesets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="AultoLib">
+	    <HintPath>..\AultoLib\1.4\Assemblies\AultoLib.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -43,5 +76,9 @@
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="bash SourceDefs/makething.sh" />
+	</Target>
 
 </Project>

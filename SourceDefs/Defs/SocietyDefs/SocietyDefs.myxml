@@ -1,0 +1,34 @@
+
+
+
+Defs:
+
+   Def <AultoLib.SocietyDef> {
+      defName: vilos
+      label: vilos society
+      folderName: Vilos
+      globalUtility: GlobalUtility_Vilos
+
+      fleshTypes {
+         li: VilosNormal
+         li: VilosMech
+      }
+      // preferredCommunicationMethods {
+      //    li: radio
+      //    li: bodylanguage
+      // }
+      // communicationMethods {
+      //    preferred {
+      //       li: radio
+      //       li: bodylanguage
+      //    }
+      //    canInitiate {
+      //       li: radio
+      //       li: bodylanguage
+      //       li: talking
+      //    }
+      //    canRecieve {
+      //       li: radio
+      //    }
+      // }
+   }

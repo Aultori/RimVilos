@@ -1,0 +1,6 @@
+﻿Defs:
+
+   BodyPartTagDef {
+      defName: VilosEnergySource
+      vital: true
+   }

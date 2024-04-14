@@ -1,0 +1,69 @@
+Defs:
+
+   Def <AultoLib.AultoLib_RaceCustomPropertiesDef> {
+      defName: Vilos
+      thingDef: VilosRace
+      society: vilos
+      languages {
+         li: VilosSpeech
+         li: Common
+      }
+      communications {
+         languages {
+            li {
+               languageDef: VilosSpeech
+               mediums { li:EMWaves li:Air }
+            }
+            li {
+               languageDef: Common
+               mediums { li:Air }
+            }
+         }
+         transmitters {
+            li {
+               name: radio transmitter
+               medium: EMWaves
+               transmitterWorkerClass: AultoLib.CommunicationTransmitterWorker_EMBroadcaster
+               comfortableDistanceCurve:
+                  points:
+                     li: (0,0.75)
+                     li: (4,1.0)
+                     li: (32,1.0)
+                     li: (64,0.0)
+            }
+            li {
+               name: speech
+               medium: Air
+               transmitterWorkerClass: AultoLib.CommunicationTransmitterWorker_SoundPlayback
+               comfortableDistanceCurve:
+                  points:
+                     li: (0,0.75)
+                     li: (4,1.0)
+                     li: (6,1.0)
+                     li: (8,0.0)
+            }
+         }
+         receivers {
+            li {
+               name: radio reciever
+               medium: EMWaves
+               receiverWorkerClass: AultoLib.CommunicationReceiverWorker_EMReceiver
+               effectivenessCurve:
+                  points:
+                     li: (0,1.0)
+                     li: (128,1.0)
+                     li: (256,0.0)
+            }
+            li {
+               name: hearing
+               medium: Air
+               receiverWorkerClass: AultoLib.CommunicationReceiverWorker_SoundReceiver
+               effectivenessCurve:
+                  points:
+                     li: (0,1.0)
+                     li: (12,1.0)
+                     li: (24,0.0)
+            }
+         }
+      }
+   }

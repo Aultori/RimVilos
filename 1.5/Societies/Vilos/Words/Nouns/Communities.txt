@@ -1,0 +1,7 @@
+outpost
+outpost
+base
+station
+city
+settlement
+campsite

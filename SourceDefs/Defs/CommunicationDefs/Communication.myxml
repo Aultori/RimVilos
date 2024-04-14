@@ -1,0 +1,9 @@
+Defs:
+
+   Def <AultoLib.CommunicationLanguageDef> {
+      defName: VilosSpeech
+      label: Vilos Speech
+      medium: EMWaves
+      inUseWord: vilos
+      showWhenUsed: true
+   }

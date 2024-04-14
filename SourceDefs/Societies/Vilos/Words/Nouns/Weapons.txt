@@ -1,0 +1,20 @@
+beam emmiter
+focused beam
+gravataional beam emmiter
+proton beam emmiter
+warp gun
+bolt gun
+
+arrow
+bolt
+
+polearm
+spear
+tail spear
+
+alien weapon
+combustion based projectile launcher
+primate weapon
+
+missile
+rocket

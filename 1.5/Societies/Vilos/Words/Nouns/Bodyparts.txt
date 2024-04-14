@@ -1,0 +1,36 @@
+head
+eye
+scanner
+crest
+antenna
+nose
+tooth
+fang
+cheek
+chin
+snoot
+snout
+tongue
+
+neck
+shoulder
+chest fluff
+chest
+arm
+elbow
+wrist
+paw
+claw
+
+dorsal scanner
+
+hip
+tail
+tail
+tail
+leg
+foot
+toe
+paw
+beans
+talon

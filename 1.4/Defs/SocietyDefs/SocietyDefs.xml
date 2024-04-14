@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<Defs>
+  
+  <Def Class="AultoLib.SocietyDef">
+    <defName>vilos</defName>
+    <label>vilos society</label>
+    <folderName>Vilos</folderName>
+    <globalUtility>GlobalUtility_Vilos</globalUtility>
+    
+    <fleshTypes>
+      <li>VilosNormal</li>
+      <li>VilosMech</li>
+      <!-- preferredCommunicationMethods { -->
+      <!-- li: radio -->
+      <!-- li: bodylanguage -->
+      <!-- } -->
+      <!-- communicationMethods { -->
+      <!-- preferred { -->
+      <!-- li: radio -->
+      <!-- li: bodylanguage -->
+      <!-- } -->
+      <!-- canInitiate { -->
+      <!-- li: radio -->
+      <!-- li: bodylanguage -->
+      <!-- li: talking -->
+      <!-- } -->
+      <!-- canRecieve { -->
+      <!-- li: radio -->
+      <!-- } -->
+      <!-- } -->
+    </fleshTypes>
+  </Def>
+</Defs>
