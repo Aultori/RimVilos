@@ -40,25 +40,29 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704" />
-		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4063" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="1.4\Assemblies\" />
 		<Folder Include="1.4\Defs\PawnKindDefs_Humanlikes\" />
 		<Folder Include="1.4\Defs\ThingDefs_Races\" />
-		<Folder Include="1.5\" />
-		<Folder Include="SourceDefs\Defs\InteractionInstanceDefs\" />
-		<Folder Include="SourceDefs\Defs\CommunicationDefs\" />
+		<Folder Include="SourceDefs\Defs\Grammar\InteractionInstanceDefs\" />
 		<Folder Include="SourceDefs\Defs\CapacityDefs\" />
-		<Folder Include="SourceDefs\Defs\CustomProperties\" />
-		<Folder Include="SourceDefs\Defs\Rulesets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="1.5\Assemblies\AultoLib.dll" />
+	  <None Include="1.5\Assemblies\AultoLib.pdb" />
+	  <None Include="1.5\Assemblies\Bubbles.dll" />
+	  <None Include="1.5\Assemblies\RimVilos.dll" />
+	  <None Include="1.5\Assemblies\RimVilos.pdb" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Reference Include="AultoLib">
-	    <HintPath>..\AultoLib\1.4\Assemblies\AultoLib.dll</HintPath>
+	    <HintPath>..\AultoLib\1.5\Assemblies\AultoLib.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

@@ -162,7 +162,6 @@ sub new_inline_stuff {
    elsif ($line =~ /\G([A-Za-z_]++)\s*/gc) ## key
    {
       my $tmp = [$1]; 
-
       my $modifier = undef;
 
       ## check for modifier
@@ -176,7 +175,7 @@ sub new_inline_stuff {
       elsif ($line =~ /\G\{\s*/gc)
       {
          while () {
-            my $entry = __SUB__->();
+            my $entry = new_inline_stuff();
             last if !defined $entry;
             push @$tmp, $entry;
          }
@@ -214,6 +213,39 @@ sub new_inline_stuff {
 ##  /^\s* (?<key>\w+) (?:\s*\[(?<modifier>[^\]]*)\])?: \s*$/x
 ##  /^\s* (?<key>\w+) (?>\s*) (?:\[(?<modifier>[^\]]*)\])? \s*\{ \s*$/x
 
+##  +------------------+
+##  |   new behavior   |
+##  +------------------+
+##  2024-05-04
+##
+##   do this before checking other stuff on the line, like if it's plain text
+##   this handles nesting entries with a /, so I won't have to do that separately anymore
+##
+##   <entry>  -->
+##                    <singlekey> { <entry> } [<modifier>]
+##                 |  <singleentry> <space> <entry>
+##                 |  <nothing>
+##
+##   <key>  -->  <singlekey>
+##             | <singlekey>[<modifier>]
+##
+##   <singleentry>  -->     -<singlekey>
+##                       |  +<singlekey>
+##                       |  <key>:<stringwithnospaces> <wordboundry>
+##                       |  <key><slashnesting> <data>
+##
+##   <slashnesting>  -->    /<key><slashnesting>
+##                       |  <nothing>
+##
+##   <data>   -->  { <entry> }
+##              |  : <space> <singleentry>
+##
+##  an exception to all of this is a line that matches /^\s* (?<key>\w+): (?>\s+) (?<value>[^{}:[\]]*) (?<=\S)\s*$/x
+##
+##  these start groups, and another level of indentaion is needed for stuff inside them:
+##  /^\s* (?<key>\w+) (?:\s*\[(?<modifier>[^\]]*)\])?: \s*$/x
+##  /^\s* (?<key>\w+) (?>\s*) (?:\[(?<modifier>[^\]]*)\])? \s*\{ \s*$/x
+
 
 ## to fix the problem where text and comments appear nested in the wrong thing
 my @space_stuff = ();
@@ -241,32 +273,59 @@ sub syntax_base {{
    push @$ref, @space_stuff; ## add xml comments and stuff
    @space_stuff = ();
  
-   # if ($line =~ /\G(?<key>\w++) (?:\[(?<modifier>[^\]]++)\])?+ :\s*+$/xgc) {
-   #    moveup( [$+{key}, $+{modifier}] ) and next  if $+{modifier}; 
-   #    moveup( $+{key} ) and next; 
+   # if ($line =~ /\G(?<key>[A-Za-z_.]++) (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ :\s*+$/xgc) {
+   #    my $temp = $+{key};
+   #    if ($+{modifier}) { $temp = [$+{key}, $+{modifier}] }
+   #    if ($+{class}) { $temp = [$+{key}, 'Class="'.$+{class}.'"'] } 
+   #    my @nest = ();
+   #    @nest = ($+{nesting} =~ /\s*+\/(\w++)/g) if $+{nesting};
+   #    moveup_nested( $temp, @nest ) and next; 
    # } 
-   # ## brackets are ignored
-   # if ($line =~ /\G(?<key>\w++) \s*+ (?:\[(?<modifier>[^\]]++)\])? \s*+ \{?\s* $/xgc) {
-   #    moveup( [$+{key}, $+{modifier}] ) and next  if $+{modifier}; 
-   #    moveup( $+{key} ) and next; 
-   # } 
-   if ($line =~ /\G(?<key>[A-Za-z_.]++) (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ :\s*+$/xgc) {
-      my $temp = $+{key};
-      $temp = [$+{key}, $+{modifier}]  if $+{modifier}; 
-      $temp = [$+{key}, 'Class="'.$+{class}.'"']  if $+{class}; 
-      my @nest = ();
-      @nest = ($+{nesting} =~ /\s*+\/(\w++)/g) if $+{nesting};
-      moveup_nested( $temp, @nest ) and next; 
-   } 
    ## brackets are ignored
-   if ($line =~ /\G(?<key>[A-Za-z_.]++) \s*+ (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ \s*+ \{?\s* $/xgc) {
+   #if ($line =~ /\G(?<key>[A-Za-z_.]++) \s*+ (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ \s*+ \{?\s* $/xgc) {
+   ## remove later
+   if ($line =~ /\G(?<key>[A-Za-z_.]++) \s*+ (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ (?: :\s*+$ | \s*+\{?\s*+$ )/xgc) {
       my $temp = $+{key};
-      $temp = [$+{key}, $+{modifier}]  if $+{modifier}; 
-      $temp = [$+{key}, 'Class="'.$+{class}.'"']  if $+{class}; 
       my @nest = ();
-      @nest = ($+{nesting} =~ /\s*+\/(\w++)/g) if $+{nesting};
+      $temp = [$+{key}, $+{modifier}]             if $+{modifier}; 
+      $temp = [$+{key}, 'Class="'.$+{class}.'"']  if $+{class}; 
+      @nest = ($+{nesting} =~ /\s*+\/(\w++)/g)    if $+{nesting};
       moveup_nested( $temp, @nest ) and next; 
    } 
+
+   # if ($line =~ /\G(?<key>[A-Za-z_.]++) \s*+ (?:\[(?<modifier>[^\]]++)\])?+ (?:\<(?<class>[^\>]++)\>)?+ (?<nesting> (\/[^\/:{]+)++ )?+ /xgc) {
+   #    my $hasModifier = defined $+{modifier};
+   #    my $hasClass = defined $+{class};
+   #    my $temp = $+{key};
+   #    my @nest = ();
+   #    $temp = [$+{key}, $+{modifier}]             if $hasModifier;
+   #    $temp = [$+{key}, 'Class="'.$+{class}.'"']  if $hasClass; 
+   #    @nest = ($+{nesting} =~ /\s*+\/(\w++)/g)    if $+{nesting};
+   #    my $nested = $#nest != 0;
+   #    if ($line =~ /\G(?: :\s*+$ | \s*+\{?\s*+$ )/xgc)
+   #    {
+   #       moveup_nested( $temp, @nest ) and next;
+   #    }
+   #    if ( !$nested and !$hasModifier and !$hasClass)
+   #    {
+   #       add_text( "<$temp $2>$1</$temp>" ) and next if $line =~ /\G : \s++ ([^{}\->]++)\s*+\[([^\]]++)\] \s*+$/xgc
+   #    }
+   #    ## only supports { for inline stuff inside it
+   #    if ($line =~ /\G \s*+ {(.*)}\s*$/xgc)
+   #    {
+   #       # my @entries = ();
+   #       my $entry = undef;
+   #       #push(@entries, $entry) while (defined ($entry = new_inline_stuff()));
+   #       #moveup_nested( $temp, @nest );
+   #       moveup_nested( $temp, @nest );
+   #       add_data($entry) while (defined ($entry = new_inline_stuff()));
+   #       next;
+   #    }
+
+   #    ## reset the position of the line
+   #    $line = getline();
+   #    $line =~ /^\s*/gc; ## EAT SPACES 
+   # } 
 
    ## for things like "<.../>"
    if ($line =~ /\G<\s*+(\w++)\s++([^>]++)>/xgc) {
@@ -277,11 +336,18 @@ sub syntax_base {{
 
    add_text("<$1/>") and next  if ($line =~ /\G\[([^\]]++)\]\s*$/xgc);
 
+
+
    ## for entries with text
    # add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (?> ([^{}:[\]]+) (?<=\S) ) \s*+$/xgc;
    # add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (?> ([^{}:]+) (?<=\S) )(?<!\]) \s*+$/xgc;
    ## if at any point " [...] something here" it's plain text
-   add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (  (?>[^}\]:]+(?<=\S)) (?:\s*+\S.*(?<=\S))?+  ) \s*+$/xgc;
+   # add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (  (?>[^}\]:]+(?<=\S)) (?:\s*+\S.*(?<=\S))?+  ) \s*+$/xgc;
+   add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (  (?>[^}\]:]+(?<=\S)) (?:\s*+\S.*(?<=\S))?+  ) (?<!\]) \s*+$/xgc;
+
+   ## for rules
+   # add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (  (?> [\s0-9A-Za-z_+\-=<>.,()[\]{}]*? -> ) (?:\s*+\S.*(?<=\S))?+  ) \s*+$/xgc;
+   add_data( [$1,$2] ) and next  if $line =~ /\G (\w++): \s++ (  (?> .*? -> ) (?:\s*+\S.*(?<=\S))?+  ) \s*+$/xgc;
 
 
    ## todo: get blocks working. the {} don't actually do anything
@@ -297,13 +363,19 @@ sub syntax_base {{
       add_data($entry);
    } 
 
-   add_text("<$1/>") and next  if ($line =~ /\G\[([^\]]++)\]\s*$/xgc);
+   #add_text("<$1/>") and next  if ($line =~ /\G\[([^\]]++)\]\s*$/xgc);
 }} 
 
 ## process the data!
 do {
    syntax_base();
-   die "[syntax error on line $linenumber] \"".($line =~ /^(.*?\G.*)$/)[0]."\""  unless $line =~ /\G\s*$/
+   #die "[syntax error on line $linenumber] \"".($line =~ /^(.*?\G[^\n]*)$/)[0]."\""  unless $line =~ /\G\s*$/
+   unless ($line =~ /\G\s*+$/) {
+      my $error = ($line =~ /^(.*?\G.*)$/)[0];
+      $error =~ s/\S\K\s+$//;
+      die qq{[syntax error on line $linenumber] "$error"};
+   }
+    
 #   die "[syntax error on line $linenumber]".($line =~ /\G.*/)  unless $line =~ /\G\s*$/
 } while (advanceline());
 

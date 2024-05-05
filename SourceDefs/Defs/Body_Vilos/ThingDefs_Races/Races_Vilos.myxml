@@ -3,7 +3,7 @@ Defs:
    ThingDef[ParentName="BasePawn" Name="BaseVilos" Abstract="True"] {
       soundImpactDefault: BulletImpact_Metal
       statBases {
-         MarketValue: 5000
+         MarketValue: 65535
          MoveSpeed: 4.6
          ToxicResistance: 1
          Flammability: 0
@@ -33,27 +33,27 @@ Defs:
             li { def:HumanlikeAdult       minAge:18 }
 
          lifeStageWorkSettings[MayRequire="Ludeon.RimWorld.Biotech"]:
-            Firefighter: 7
-            Patient: 0
-            Doctor: 10
+            Firefighter:    7
+            Patient:        0
             PatientBedRest: 0
-            Childcare: 0      [MayRequire="Ludeon.RimWorld.Biotech"]
-            BasicWorker: 3
-            Warden: 10
-            Handling: 7
-            Cooking: 7
-            Hunting: 7
-            Construction: 10
-            Growing: 7
-            Mining: 7
-            PlantCutting: 7
-            Smithing: 13
-            Tailoring: 7
-            Art: 10
-            Crafting: 7
-            Hauling: 3
-            Cleaning: 3
-            Research: 13
+            Doctor:         10
+            Childcare:      0 [MayRequire="Ludeon.RimWorld.Biotech"]
+            BasicWorker:    3
+            Warden:         10
+            Handling:       7
+            Cooking:        7
+            Hunting:        7
+            Construction:   10
+            Growing:        7
+            Mining:         7
+            PlantCutting:   7
+            Smithing:       13
+            Tailoring:      7
+            Art:            10
+            Crafting:       7
+            Hauling:        3
+            Cleaning:       3
+            Research:       13
 
          soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
          soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
@@ -68,10 +68,14 @@ Defs:
          ageGenerationCurve {
             points:
                li: (21,0)
-               li: (32,100)
+               li: (32,75)
                li: (64,100)
-               li: (128,0)
+               li: (128,100)
+               li: (512,12)
+               li: (2048,6)
+               li: (4096,0)
          }
+
 
          // DO SOMETHING ABOUT THESE!!!?
          hediffGiverSets:
@@ -96,6 +100,7 @@ Defs:
       }
    }
 
+
    ThingDef[ParentName="BaseVilos"] {
       defName: VilosRace
       label: Vilos
@@ -108,8 +113,7 @@ Defs:
       tools {
          li {
             label: superior left fist
-            capacities:
-               li: Blunt
+            capacities { li:Blunt }
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: SuperiorLeftHand 
@@ -124,14 +128,12 @@ Defs:
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: SuperiorRightHand 
-            surpriseAttack:
-               extraMeleeDamages:
-                  li { def:Stun amount:14 } 
+            surpriseAttack/extraMeleeDamages:
+               li { def:Stun amount:14 }
          }
          li {
             label: inferior left fist
-            capacities:
-               li: Blunt
+            capacities { li:Blunt }
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: InferiorLeftHand 
@@ -141,8 +143,7 @@ Defs:
          }
          li {
             label: inferior right fist
-            capacities:
-               li: Blunt
+            capacities { li:Blunt }
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: InferiorRightHand 
@@ -152,8 +153,7 @@ Defs:
          }
          li {
             label: teeth
-            capacities:
-               li: Bite
+            capacities { li:Blunt }
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: Teeth
@@ -163,8 +163,7 @@ Defs:
          }
          li {
             label: head
-            capacities:
-               li: Blunt
+            capacities { li:Blunt }
             power: 5
             cooldownTime: 2
             linkedBodyPartsGroup: HeadAttackTool
@@ -173,8 +172,7 @@ Defs:
          } 
          li {
             label: tail
-            capacities:
-               li: Blunt
+            capacities { li:Blunt }
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: TailAttackTool
@@ -184,4 +182,3 @@ Defs:
          }
       }
    }
-

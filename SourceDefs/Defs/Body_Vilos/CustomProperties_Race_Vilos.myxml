@@ -4,10 +4,6 @@ Defs:
       defName: Vilos
       thingDef: VilosRace
       society: vilos
-      languages {
-         li: VilosSpeech
-         li: Common
-      }
       communications {
          languages {
             li {

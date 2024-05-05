@@ -14,18 +14,17 @@
          RoyalFavorValue: 3
       }
 
-      tools
-      { 
+      tools { 
          li {
-           label: left fist
-           capacities:
-              li: Blunt
-           power: 8.2
-           cooldownTime: 2
-           linkedBodyPartsGroup: LeftHand
-           surpriseAttack:
-              extraMeleeDamages:
-                 li { def:Stun amount:14 } 
+            label: left fist
+            capacities:
+               li: Blunt
+            power: 8.2
+            cooldownTime: 2
+            linkedBodyPartsGroup: LeftHand
+            surpriseAttack:
+               extraMeleeDamages:
+                  li { def:Stun amount:14 } 
          }
          li {
             label: right fist
@@ -61,8 +60,7 @@
          } 
       }
 
-      race
-      { 
+      race { 
          thinkTreeMain:     Humanlike
          thinkTreeConstant: HumanlikeConstant
          intelligence:      Humanlike
@@ -92,7 +90,7 @@
             li { def:HumanlikePreTeenager minAge:9 } [MayRequire="Ludeon.RimWorld.Biotech"]
             li { def:HumanlikeTeenager    minAge:13 }
             li { def:HumanlikeAdult       minAge:18 }
-         lifeStageWorkSettings[MayRequire="Ludeon.RimWorld.Biotech"]:
+         lifeStageWorkSettings[MayRequire="Ludeon.RimWorld.Biotech"] {
             Firefighter: 7
             Patient: 0
             Doctor: 10
@@ -114,6 +112,7 @@
             Hauling: 3
             Cleaning: 3
             Research: 13
+         }
 
          soundMeleeHitPawn: Pawn_Melee_Punch_HitPawn
          soundMeleeHitBuilding: Pawn_Melee_Punch_HitBuilding
@@ -156,18 +155,18 @@
          li: Euthanize
          li: Anesthetize
          li: CureScaria
-         li: Vasectomy   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: ReverseVasectomy   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: TubalLigation   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: ExtractOvum   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: CureBloodRot   [MayRequire="Ludeon.RimWorld.Royalty"]
-         li: CureAbasia   [MayRequire="Ludeon.RimWorld.Royalty"]
-         li: ExtractHemogenPack   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: BloodTransfusion   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: ImplantXenogerm   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: ImplantIUD   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: RemoveIUD   [MayRequire="Ludeon.RimWorld.Biotech"]
-         li: TerminatePregnancy   [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: Vasectomy           [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ReverseVasectomy    [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: TubalLigation       [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ExtractOvum         [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: CureBloodRot        [MayRequire="Ludeon.RimWorld.Royalty"]
+         li: CureAbasia          [MayRequire="Ludeon.RimWorld.Royalty"]
+         li: ExtractHemogenPack  [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: BloodTransfusion    [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ImplantXenogerm     [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: ImplantIUD          [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: RemoveIUD           [MayRequire="Ludeon.RimWorld.Biotech"]
+         li: TerminatePregnancy  [MayRequire="Ludeon.RimWorld.Biotech"]
       }
       ingredient {
          mergeCompatibilityTags:
