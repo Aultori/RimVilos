@@ -48,16 +48,8 @@
 		<Folder Include="1.4\Assemblies\" />
 		<Folder Include="1.4\Defs\PawnKindDefs_Humanlikes\" />
 		<Folder Include="1.4\Defs\ThingDefs_Races\" />
+		<Folder Include="1.5\Assemblies\" />
 		<Folder Include="SourceDefs\Defs\Grammar\InteractionInstanceDefs\" />
-		<Folder Include="SourceDefs\Defs\CapacityDefs\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="1.5\Assemblies\AultoLib.dll" />
-	  <None Include="1.5\Assemblies\AultoLib.pdb" />
-	  <None Include="1.5\Assemblies\Bubbles.dll" />
-	  <None Include="1.5\Assemblies\RimVilos.dll" />
-	  <None Include="1.5\Assemblies\RimVilos.pdb" />
 	</ItemGroup>
 
 	<ItemGroup>

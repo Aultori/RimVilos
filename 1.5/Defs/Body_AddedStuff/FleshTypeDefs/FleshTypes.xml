@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <FleshTypeDef>
+    <defName>VilosNormal</defName>
+    <corpseCategory>CorpsesAnimal</corpseCategory>
+    <damageEffecter>Damage_HitFlesh</damageEffecter>
+    <genericWounds>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundFleshA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundFleshB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundFleshC</texture>
+      </li>
+    </genericWounds>
+    <!-- vilos bodies should automatically close off wounds after some time -->
+    <bandagedWounds>
+      <li>
+        <texture>Things/Pawn/Wounds/BandagedA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/BandagedB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/BandagedC</texture>
+      </li>
+    </bandagedWounds>
+  </FleshTypeDef>
+  <!-- Vilos can get scars, but they heal over time, and usually aren't visible because of their "fur" -->
+  <!-- hediffWounds { -->
+  <!-- li { -->
+  <!-- hedeff: Scarification -->
+  <!-- hedeff: MissingBodyPart -->
+  <!-- } -->
+  <!-- } -->
+  
+  <FleshTypeDef>
+    <defName>VilosMech</defName>
+    <corpseCategory>CorpsesMechanoid</corpseCategory>
+    <damageEffecter>Damage_HitMechanoid</damageEffecter>
+    <genericWounds>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechA</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechB</texture>
+      </li>
+      <li>
+        <texture>Things/Pawn/Wounds/WoundMechC</texture>
+      </li>
+      <!-- Vilos mechs can get "scars": temporary repair jobs that never heal on their own. -->
+      <!-- With the right technology they can be healed completely. -->
+    </genericWounds>
+  </FleshTypeDef>
+</Defs>

@@ -61,8 +61,8 @@ Defs:
          soundMeleeDodge: Pawn_MeleeDodge 
 
          specialShadowData:
-            volume: (0.3, 0.8, 0.4)
-            offset: (0,0,-0.3)
+            volume = (0.3, 0.8, 0.4)
+            offset = (0,0,-0.3)
 
          // something simple. I'll need to develop the lore further then correct this
          ageGenerationCurve {
@@ -104,7 +104,7 @@ Defs:
    ThingDef[ParentName="BaseVilos"] {
       defName: VilosRace
       label: Vilos
-      description: Vilos are a race of synthetic creatures that often resemble dragons. They are very technologically advanced, their society existing for thousands, possibly millions of years after entering the space age.
+      description = Vilos are a race of synthetic creatures that often resemble dragons. They are very technologically advanced, their society existing for thousands, possibly millions of years after entering the space age.
 
       race {
          fleshType: VilosNormal
@@ -117,9 +117,7 @@ Defs:
             power: 8.2
             cooldownTime: 2
             linkedBodyPartsGroup: SuperiorLeftHand 
-            surpriseAttack:
-               extraMeleeDamages:
-                  li { def:Stun amount:14 } 
+            surpriseAttack/extraMeleeDamages{ li { def:Stun amount:14 } }
          }
          li {
             label: superior right fist
@@ -138,8 +136,7 @@ Defs:
             cooldownTime: 2
             linkedBodyPartsGroup: InferiorLeftHand 
             surpriseAttack:
-               extraMeleeDamages:
-                  li { def:Stun amount:14 } 
+               extraMeleeDamages: li { def:Stun amount:14 } 
          }
          li {
             label: inferior right fist
@@ -148,8 +145,7 @@ Defs:
             cooldownTime: 2
             linkedBodyPartsGroup: InferiorRightHand 
             surpriseAttack:
-               extraMeleeDamages:
-                  li { def:Stun amount:14 } 
+               extraMeleeDamages: li { def:Stun amount:14 } 
          }
          li {
             label: teeth

@@ -7,26 +7,26 @@ Defs:
          // some things copied from the humanlike think tree
          
          //RW: If we HAVE to keep lying down...
-         li[Class="ThinkNode_ConditionalMustKeepLyingDown"] {
+         li<ThinkNode_ConditionalMustKeepLyingDown> {
             subNodes {
 
                //RW: Do a queued job if possible
-               li[Class="ThinkNode_QueuedJob"]:
+               li<ThinkNode_QueuedJob>:
                   inBedOnly: true
 
                //RW: Get joy
-               li[Class="ThinkNode_Tagger"] {
+               li<ThinkNode_Tagger> {
                   tagToGive: SatisfyingNeeds
                   subNodes {
-                     li[Class="ThinkNode_PrioritySorter"]/subNodes:
+                     li<ThinkNode_PrioritySorter>/subNodes:
                         li<ThinkNode_Priority_GetJoy>/subNodes:
-                           [li Class="JobGiver_GetJoyInBed"]
-                        [li Class="JobGiver_MeditateInBed"]
+                           <li JobGiver_GetJoyInBed>
+                        <li JobGiver_MeditateInBed>
                   }
                } 
 
                //RW: Keep lying down
-               [li Class="JobGiver_KeepLyingDown"]
+               <li JobGiver_KeepLyingDown>
 
             } 
          }
@@ -45,7 +45,7 @@ Defs:
             treeDef: Abilities_Escape
 
          //RW: React to close melee threat
-         [li Class="JobGiver_ReactToCloseMeleeThreat"]
+         <li JobGiver_ReactToCloseMeleeThreat>
 
          //RW: Mental state non critical
          li<ThinkNode_Subtree>:
@@ -57,15 +57,15 @@ Defs:
             treeDef: RopedPawn
 
          //RW: Insertion hook for modders
-         li[Class="ThinkNode_SubtreesByTag"]:
+         li<ThinkNode_SubtreesByTag>:
             insertTag: Humanlike_PostMentalState
 
          //RW: Do a queued job
-         [li Class="ThinkNode_QueuedJob"]
+         <li ThinkNode_QueuedJob>
 
          //RW: Wait if drafted
-         li[Class="ThinkNode_ConditionalColonist"]/subNodes {
-            li[Class="ThinkNode_Tagger"] {
+         li<ThinkNode_ConditionalColonist>/subNodes {
+            li<ThinkNode_Tagger> {
                tagToGive: DraftedOrder
                subNodes:
                   [li Class="JobGiver_MoveToStandable"]
@@ -74,8 +74,8 @@ Defs:
          }
 
          //RW: Self-tend if you're an NPC
-         li[Class="ThinkNode_ConditionalNPCCanSelfTendNow"]/subNodes:
-            [li Class="JobGiver_SelfTend"]
+         li<ThinkNode_ConditionalNPCCanSelfTendNow>/subNodes:
+            <li JobGiver_SelfTend>
 
          // vilos don't have anything like land lords, so I'm not including this
          //RW: Lord directives
@@ -84,24 +84,24 @@ Defs:
          // I'll just copy what RimWorld does because it's part of the gameplay, how new colonists are aquired.
          //RW: Prisoner
          //BEGIN Prisoner
-         li[Class="ThinkNode_ConditionalPrisoner"] {
+         li<ThinkNode_ConditionalPrisoner> {
             leaveJoinableLordIfIssuesJob: true
             subNodes {
                //RW: If it's the player home map...
-               li[Class="ThinkNode_ConditionalInNonPlayerHomeMap"] {
+               li<ThinkNode_ConditionalInNonPlayerHomeMap> {
                   invert: true
                   subNodes:
                      //RW: Wait instead of escaping if should
-                     li[Class="ThinkNode_Tagger"]:
+                     li<ThinkNode_Tagger>:
                         tagToGive: Idle
                         subNodes:
-                           li[Class="JobGiver_PrisonerWaitInsteadOfEscaping"]:
+                           li<JobGiver_PrisonerWaitInsteadOfEscaping>:
                               maxDanger: Deadly
                      //RW: Escape
-                     li[Class="ThinkNode_Tagger"]:
+                     li<ThinkNode_Tagger>:
                         tagToGive: Escaping
                         subNodes:
-                           [li Class="JobGiver_PrisonerEscape"]
+                           <li JobGiver_PrisonerEscape>
                }
 
                //RW: Exit map if released

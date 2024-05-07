@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <Def Class="AultoLib.CommunicationLanguageDef">
+    <defName>VilosSpeech</defName>
+    <label>Vilos Speech</label>
+    <medium>EMWaves</medium>
+    <inUseWord>vilos</inUseWord>
+    <showWhenUsed>true</showWhenUsed>
+  </Def>
+</Defs>

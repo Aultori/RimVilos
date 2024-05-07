@@ -16,17 +16,17 @@ Defs:
       recipientThought: Chitchat
       logRulesInitiator {
          rulesStrings {
-            li: r_logentry->[INITIATOR_nameDef] [talkedto] [RECIPIENT_nameDef] about [talkedtotopic].
+            li = r_logentry->[INITIATOR_nameDef] [talkedto] [RECIPIENT_nameDef] about [talkedtotopic].
 
-            li: talkedto->talked to
-            li: talkedto->chatted to
-            li: talkedto->spoke with
-            li: talkedto->talked with
-            li: talkedto->chatted with
-            li: talkedto->conversed with
+            li = talkedto->talked to
+            li = talkedto->chatted to
+            li = talkedto->spoke with
+            li = talkedto->talked with
+            li = talkedto->chatted with
+            li = talkedto->conversed with
 
-            li: talkedtotopic->[TalkTopicLight]
-            li: talkedtotopic->[Planet]
+            li = talkedtotopic->[TalkTopicLight]
+            li = talkedtotopic->[Planet]
          }
       }
    }
@@ -44,21 +44,21 @@ Defs:
       recipientThought: KindWords
       logRulesInitiator {
          rulesStrings {
-            li: r_logentry->[INITIATOR_nameDef] [complimented] [RECIPIENT_nameDef]'s [VILOS|PersonalCharacteristic]
+            li = r_logentry->[INITIATOR_nameDef] [complimented] [RECIPIENT_nameDef]'s [VILOS|PersonalCharacteristic]
 
-            li: complimented(p=3)->complimented
-            li: complimented->praised
-            li: complimented->commended
-            li: complimented->lauded
-            li: complimented->applauded
-            li: complimented->celebrated
-            li: complimented->saluted
-            li: complimented->spoke kindly of
-            li: complimented->expressed good things about
-            li: complimented->offered kinds words about
-            li: complimented->verbally appreciated
-            li: complimented->expressed appreciation for
-            li: complimented->said good things about
+            li = complimented(p=3)->complimented
+            li = complimented->praised
+            li = complimented->commended
+            li = complimented->lauded
+            li = complimented->applauded
+            li = complimented->celebrated
+            li = complimented->saluted
+            li = complimented->spoke kindly of
+            li = complimented->expressed good things about
+            li = complimented->offered kinds words about
+            li = complimented->verbally appreciated
+            li = complimented->expressed appreciation for
+            li = complimented->said good things about
          }
       }
    }
